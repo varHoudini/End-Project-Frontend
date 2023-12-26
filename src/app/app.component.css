@@ -1,0 +1,26 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    height: 5vh;
+    background-color: rgba(78, 51, 1, 0.227);
+  }
+
+.logo h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: red;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-size: 1.2rem;
+}
