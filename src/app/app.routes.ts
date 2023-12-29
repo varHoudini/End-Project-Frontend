@@ -20,5 +20,17 @@ export const routes: Routes = [
     {
         path: 'producten',
         component: ProductenComponent
+    },
+    {
+        path: 'producten/kids',
+        component: ProductenComponent
+    },
+    {
+        path: 'producten/heren',
+        component: ProductenComponent
+    },
+    {
+        path: 'producten/dames',
+        component: ProductenComponent
     }
 ];
