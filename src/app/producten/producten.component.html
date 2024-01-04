@@ -1,3 +1,27 @@
-<p>producten works!</p>
-
-<!-- Hier kun je de html voor producten maken en ook een buttons voor heren dames en kinderen etc. Als het mogelijk is een hover effect dat je de items kan selecteren bvb schoenen, broeken, truien, jassen etc.. -->
+<div class="product-container">
+    <p>Producten works!</p>
+  
+    <div class="category-buttons">
+      <button onclick="filterItems('all')">Alle producten</button>
+      <button onclick="filterItems('heren')">Heren</button>
+      <button onclick="filterItems('dames')">Dames</button>
+      <button onclick="filterItems('kinderen')">Kinderen</button>
+    </div>
+  
+    <div class="product-category" onclick="filterItems('heren')">Heren</div>
+    <div class="product-category" onclick="filterItems('dames')">Dames</div>
+    <div class="product-category" onclick="filterItems('kinderen')">Kinderen</div>
+  
+    <div class="product-item" data-category="heren" data-price="59.99">Schoenen</div>
+    <div class="product-item" data-category="heren" data-price="39.99">Broeken</div>
+    <div class="product-item" data-category="heren" data-price="29.99">Truien</div>
+  
+    <div class="product-item" data-category="dames" data-price="69.99">Schoenen</div>
+    <div class="product-item" data-category="dames" data-price="49.99">Jurken</div>
+    <div class="product-item" data-category="dames" data-price="59.99">Jassen</div>
+  
+    <div class="product-item" data-category="kinderen" data-price="29.99">Schoenen</div>
+    <div class="product-item" data-category="kinderen" data-price="19.99">Broeken</div>
+    <div class="product-item" data-category="kinderen" data-price="24.99">Truien</div>
+  </div>
+  

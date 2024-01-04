@@ -1,31 +1,78 @@
-    <!-- Dit kan ook aangepast worden indien nodig -->
-    <header>
-        <div class="logo">
-          <a href="/home">
-            La<span class="red">Renta</span>
-          </a>
-        </div>
-    
-        <ul class="navbar">
-          <li class="dropdown">
-            <a href="/heren" class="dropbtn">Heren</a>
-          </li>
-          <li class="dropdown">
-            <a href="/dames" class="dropbtn">Dames</a>
-          </li>
-          <li class="dropdown">
-            <a href="/kids" class="dropbtn">Kids</a>
-          </li>
-          <li><a href="/contact">Contact</a></li>
-        </ul>
-      </header>
+<!-- Dit kan ook aangepast worden indien nodig -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
 
-      <script src="script.js"></script>
-      
-    <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-          </div>    
-             <router-outlet></router-outlet>
-        </div>
+<header>
+  <div class="header__logo">
+    <a href="/home"> MAD<span class="red">fashion</span> </a>
+  </div>
+
+  <div class="header__info">
+    <ul class="navbar">
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+
+    <div class="header__cart">
+      <h1>Cart</h1>
+      <span>0</span>
+    </div>
+  </div>
+</header>
+
+<script src="script.js"></script>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12"></div>
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<section></section>
+
+<footer>
+  <div class="footer__info__container">
+    <div></div>
+    <div class="footer__info">
+      <h1>MadFashion</h1>
+      <p>Fashion for all your needs and desires MF</p>
+      <div>
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-youtube"></a>
+        <a href="#" class="fa fa-instagram"></a>
       </div>
+    </div>
+
+    <div class="footer__nieuwsbrief">
+      <h3>Join the MAD Movement</h3>
+      <p>
+        Be a part of the fashion revolution. Sign up for our newsletter to stay
+        updated on the latest trends, exclusive releases, and exciting events.
+        Embrace the extraordinary with MAD Fashion!
+      </p>
+
+      <form action="#" method="post" id="newsletter_form">
+        <div class="email">
+          <label for="email"></label>
+          <input
+            type="email"
+            placeholder="My e-mail is"
+            name="email"
+            id="email_input"
+            required
+          />
+        </div>
+        <div class="submit">
+          <input type="submit" value="Send Message" id="form_button" />
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="footer__copyright__container">
+    <h2>Copyright ©2024 MadFashion <span>Design by Mikail</span></h2>
+  </div>
+</footer>
