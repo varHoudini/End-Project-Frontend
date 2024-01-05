@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  padding: 0;
+  color: black;
+}
+
+/*witte ruimte*/
+.witte__ruimte {
+  height: 120px;
+  position: relative;
+}
+
+/*de rest van de pagina*/
+section {
+  z-index: 1;
+  position: relative;
+  background-color: white;
+}
+
+#container {
+  z-index: 1;
+  max-width: 768px;
+  position: relative;
+  margin: 0 auto 0 auto;
+  border: solid 3px black;
+}
+
+form {
+  padding: 37.5px;
+}
+
+h1 {
+  font-size: 25px;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 7px;
+  padding: 50px 0 30px 0;
+  text-transform: uppercase;
+}
+
+.name input::placeholder,
+.email input::placeholder,
+.telephone input::placeholder,
+.message textarea::placeholder {
+  color: black;
+}
+
+.email {
+  float: right;
+  width: 45%;
+}
+
+.message {
+  float: none;
+}
+
+.name {
+  float: left;
+  width: 45%;
+}
+
+.subject,
+.telephone {
+  width: 100%;
+}
+
+select {
+  outline: none;
+  -webkit-appearance: none;
+  background: url("https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-arrow-down-32.png")
+    no-repeat right;
+}
+
+textarea {
+  width: 100%;
+  resize: none;
+  height: 150px;
+  line-height: 150%;
+}
+
+input[type="text"],
+[type="email"],
+select,
+textarea {
+  width: 100%;
+  border: none;
+  font-size: 0.8em;
+  font-weight: 400;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+  box-sizing: border-box;
+  padding: 0 0 0.875em 0;
+  margin: 0em 0 1.875em 0;
+  text-transform: uppercase;
+  border-bottom: solid 2px black;
+}
+
+input[type="text"]:focus,
+[type="email"]:focus,
+textarea:focus {
+  outline: none;
+}
+
+#form_button {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.875em;
+  padding: 20px 35px;
+  background: white;
+  transition: all 0.3s;
+  display: inline-block;
+  text-transform: uppercase;
+  border: solid 2px black;
+}
+
+#form_button:hover {
+  color: #f2f3eb;
+  background: black;
+  border: 2px solid white;
+}
+
+@media screen and (max-width: 768px) {
+  #container {
+    margin: 20px auto;
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 26px;
+  }
+
+  .underline {
+    width: 68px;
+  }
+
+  #form_button {
+    padding: 15px 25px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  h1 {
+    font-size: 18px;
+  }
+
+  .icon {
+    height: 35px;
+    width: 35px;
+  }
+
+  .underline {
+    width: 53px;
+  }
+
+  input[type="text"],
+  [type="email"],
+  select,
+  textarea {
+    font-size: 0.875em;
+  }
+}

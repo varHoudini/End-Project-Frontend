@@ -1,0 +1,208 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*header*/
+header {
+  top: 0;
+  z-index: 0;
+  position: sticky;
+  pointer-events: none;
+}
+.header__container {
+  height: 500px;
+  pointer-events: none;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(assets/headerW.jpg);
+}
+
+.header__text {
+  padding-top: 100px;
+  text-align: center;
+  pointer-events: none;
+}
+.header__text p {
+  color: white;
+  font-size: 80px;
+  font-weight: 600;
+}
+
+.header__button {
+  z-index: 5;
+  position: relative;
+  padding-top: 50px;
+  text-align: center;
+}
+.header__button a {
+  width: 200px;
+  margin: 10px;
+  padding: 20px;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  pointer-events: auto;
+  display: inline-block;
+  text-decoration: none;
+  transition: border 0.8s;
+  background-color: black;
+  border: 1px solid white;
+}
+.header__button a:hover {
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+}
+
+/*de rest van de pagina*/
+section {
+  z-index: 1;
+  position: relative;
+  background-color: white;
+}
+
+/*top_categories*/
+.top__categories__container h1 {
+  padding-top: 40px;
+  text-align: center;
+}
+.top__categories {
+  display: grid;
+  text-align: center;
+  grid-column-gap: 10px;
+  margin: 20px 80px 0 80px;
+  grid-template-columns: repeat(6, 1fr);
+}
+.top__categorie div {
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.top__categorie p {
+  padding-top: 10px;
+}
+
+.categorie_img_jackets {
+  background-image: url(assets/jacketsW.webp);
+}
+.categorie_img_broeken {
+  background-image: url(assets/broekenW.webp);
+}
+.categorie_img_sweatshirt {
+  background-image: url(assets/sweatshirtsW.jpg);
+}
+.categorie_img_jurken {
+  background-image: url(assets/jurkenW.webp);
+}
+.categorie_img_tops {
+  background-image: url(assets/topsW.jpg);
+}
+.categorie_img_schoenen {
+  background-image: url(assets/schoenenW.webp);
+}
+
+/*looks*/
+.look__container h1 {
+  padding-top: 80px;
+  text-align: center;
+}
+.look__container p {
+  font-size: 15px;
+  text-align: center;
+}
+.look__categorie {
+  display: grid;
+  grid-column-gap: 10px;
+  margin: 20px 40px 0 40px;
+  grid-template-columns: repeat(4, 1fr);
+}
+.look__categorie div {
+  height: 350px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.look__categorie p {
+  color: white;
+  font-size: 40px;
+  text-align: left;
+  padding-left: 30px;
+  padding-top: 280px;
+}
+
+.categorie_img_streetwear {
+  background-image: url(assets/streetwearW.webp);
+}
+.categorie_img_casual {
+  background-image: url(assets/casualW.jpg);
+}
+.categorie_img_trendy {
+  background-image: url(assets/trendyW.jpg);
+}
+.categorie_img_formal {
+  background-image: url(assets/formalW.jpg);
+}
+
+.filter__clothes__container {
+  display: grid;
+  text-align: center;
+  grid-column-gap: 10px;
+  padding: 50px 40px 0 40px;
+  grid-template-columns: repeat(4, 1fr);
+}
+.filter__container {
+  display: grid;
+  text-align: center;
+  grid-template-rows: repeat(1, 2fr);
+}
+
+.filter__container__categories,
+.filter__container__merken {
+  text-align: left;
+  padding: 20px;
+  color: rgb(55, 54, 54);
+  border: 1px solid rgb(210, 208, 208);
+}
+.filter__container__categories h1,
+.filter__container__merken h1 {
+  padding-bottom: 10px;
+}
+.filter__container__categories p,
+.filter__container__merken p {
+  padding-bottom: 5px;
+}
+
+/*kleren*/
+.clothes_container {
+  text-align: left;
+  grid-column-end: 5;
+  grid-column-start: 2;
+}
+
+.clothes__container__filter select {
+  padding: 5px;
+  border-radius: 0;
+  margin-left: 10px;
+  color: rgb(59, 59, 59);
+  border: 1px solid rgb(210, 208, 208);
+}
+
+.clothes__container__items {
+  display: grid;
+  margin-top: 20px;
+  text-align: center;
+  grid-column-gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.item_img {
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(assets/jacketsW.webp);
+}
