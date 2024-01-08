@@ -22,8 +22,9 @@ header {
 }
 .header__info {
   display: grid;
-  grid-column-gap: 20px;
-  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  grid-column-gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .navbar {
@@ -42,8 +43,11 @@ header {
   font-size: 10px;
   text-align: center;
   align-items: center;
-  grid-column-gap: 5px;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+}
+.header__cart h1 {
+  grid-column-end: 3;
+  grid-column-start: 1;
 }
 .header__cart span {
   width: 20px;
@@ -51,6 +55,22 @@ header {
   font-size: 15px;
   padding-top: 5px;
   border: 1px solid white;
+}
+
+.header__login a {
+  padding: 8px;
+  color: white;
+  font-size: 20px;
+  border-radius: 5px;
+  text-align: center;
+  background: black;
+  text-decoration: none;
+  border: 1px solid white;
+}
+.header__login a:hover {
+  color: black;
+  background: white;
+  border: 1px solid black;
 }
 
 /*witte ruimte*/
@@ -84,7 +104,7 @@ footer {
 .footer__info__container div {
   margin-top: 40px;
 }
-.fa {
+.footer__info a {
   width: 20px;
   margin: 5px;
   padding: 10px;
@@ -96,7 +116,7 @@ footer {
   text-decoration: none;
   border: 1px solid white;
 }
-.fa:hover {
+.footer__info a:hover {
   opacity: 0.7;
 }
 
