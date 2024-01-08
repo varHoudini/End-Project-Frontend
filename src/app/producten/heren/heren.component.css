@@ -50,6 +50,7 @@ header {
   transition: border 0.8s;
   background-color: black;
   border: 1px solid white;
+  transition: .5s ease-in-out;
 }
 .header__button a:hover {
   color: black;

@@ -1,0 +1,34 @@
+<div class="container">
+    <form>
+      <div class="form-group">
+        <label for="productName">Product Name:</label>
+        <input type="text" id="productName" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="productDescription">Product Description:</label>
+        <textarea id="productDescription" required></textarea>
+      </div>
+  
+      <div class="form-group">
+        <label for="productPrice">Product Price:</label>
+        <input type="number" id="productPrice" required>
+      </div>
+  
+      <div class="file-upload">
+        <label for="fileInput" class="custom-file-upload">
+          <input type="file" id="fileInput" (change)="onFileSelected($event)" />
+          Choose Image
+        </label>
+      </div>
+  
+      <div class="image-preview">
+        <img [src]="imagePath" alt="Selected Image">
+      </div>
+  
+      <div class="form-group">
+        <button type="submit">Add Product</button>
+      </div>
+    </form>
+  </div>
+  

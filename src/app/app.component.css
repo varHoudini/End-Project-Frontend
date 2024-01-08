@@ -15,6 +15,11 @@ header {
   justify-content: space-between;
 }
 
+.red {
+  color: red;
+  font-size: 30px;
+}
+
 .header__logo a {
   color: white;
   font-size: 30px;
@@ -66,6 +71,7 @@ header {
   background: black;
   text-decoration: none;
   border: 1px solid white;
+  transition: .5s ease-in-out;
 }
 .header__login a:hover {
   color: black;
