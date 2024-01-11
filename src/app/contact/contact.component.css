@@ -80,6 +80,7 @@ textarea {
 
 input[type="text"],
 [type="email"],
+[type="number"],
 select,
 textarea {
   width: 100%;
@@ -97,6 +98,8 @@ textarea {
 
 input[type="text"]:focus,
 [type="email"]:focus,
+[type="number"]:focus,
+select:focus,
 textarea:focus {
   outline: none;
 }
