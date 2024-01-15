@@ -1,31 +1,33 @@
+
 .container {
     display: flex;
 }
 
-.red {
-    color: red;
-}
-
 .side-bar {
     width: 200px;
+    min-width: 200px; 
     height: 100vh;
-    background-color: #f2f2f2;
+    background-color: #c5c5c5;
+    color: #fff;
     padding: 20px;
-    margin-top: 10vh;
+    box-sizing: border-box;
+    position: fixed;
+    margin-top: 8vh;
 }
 
-.side-bar a{
+.side-bar a {
     display: block;
     padding: 10px;
     text-decoration: none;
-    color: #333;
-    font-size: 20px;
-    transition: .5s ease-in-out;
+    color: #515151;
+    font-size: 16px;
+    border-radius: 12px;
+    transition: 0.3s ease-in-out;
 }
 
 .side-bar a:hover {
-    background-color: #ddd;
-    color: #333;
+    color: white;
+    background-color: #b11717;
 }
 
 .side-bar ul {
@@ -37,9 +39,66 @@
 .main-content {
     flex: 1;
     padding: 20px;
-    margin-top: 10vh;
+    box-sizing: border-box;
+    margin-top: 9vh;
+    margin-left: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.main-content h1 {
+.admin-cp {
+    width: 400px;
+    background-color: #b5b5b55d;
+    border-radius: 12px;
+}
+
+.admin-cp h1 {
     text-align: center;
+}
+
+.product-section {
+    margin-top: 20px;
+}
+
+.product-section h2 {
+    color: #393939;
+}
+
+.product-section form {
+    display: grid;
+    gap: 10px;
+}
+
+.product-section label {
+    color: #616161;
+}
+
+.product-section input,
+.product-section textarea,
+.product-section select {
+    width: 500px;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.product-section button {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    max-width: 500px;
+}
+
+.product-section button:hover {
+    background-color: #45a049;
+}
+
+.red {
+    color: red;
 }

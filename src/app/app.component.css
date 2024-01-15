@@ -87,12 +87,16 @@ section {
   background-color: white;
 }
 
+.container {
+  margin-bottom: 6vh;
+}
+
 /*footer*/
 footer {
   width: 100%;
   color: white;
   text-align: center;
-  /*background-size: block;*/
+  /* background-size: block; */
   background-color: black;
   background-position: left;
   background-repeat: no-repeat;
