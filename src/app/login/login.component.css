@@ -159,3 +159,7 @@ input[type="password"]:focus {
     font-size: 0.875em;
   }
 }
+
+.no-account {
+  margin-top: 20px;
+}
