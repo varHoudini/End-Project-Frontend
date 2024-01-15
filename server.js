@@ -69,6 +69,28 @@ app.get('/api/products', (req, res) => {
   });
 });
 
+// Endpoint for fetching newsletter data
+app.get('/api/newsletter', (req, res) => {
+  console.log('Request received on /api/newsletter');
+
+  const query = 'SELECT * FROM newsletter LIMIT 1'; // Assuming you have a table named 'newsletter'
+
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error('MySQL query error:', err);
+      res.status(500).send('Internal server error');
+    } else {
+      if (results.length > 0) {
+        const newsletterData = results[0]; // Assuming you only want one newsletter entry
+        console.log('Newsletter data:', newsletterData);
+        res.json(newsletterData);
+      } else {
+        res.status(404).send('Newsletter not found');
+      }
+    }
+  });
+});
+
 // Voorbeeld van een GET-endpoint voor /api/users
 app.get('/api/users', (req, res) => {
   console.log('Verzoek ontvangen op /api/users');

@@ -20,7 +20,13 @@
 <section class="info__container">
   <div class="info__container__text">
     <h1>MADfashion</h1>
-    <h2>a revolutionary clothing brand</h2>
+    <div>
+      @if (newsletterContent) {
+        <h2>{{ newsletterContent.title }}</h2>
+        <p>{{ newsletterContent.content }}</p>
+      }
+    </div>
+    <!-- <h2>a revolutionary clothing brand</h2>
     <p>
       Introducing MADfashion, a revolutionary clothing brand that seamlessly
       blends the edgy urban vibes of Bershka with the luxurious sophistication
@@ -40,7 +46,7 @@
       find the perfect piece to express their individuality. The brand prides
       itself on pushing boundaries and challenging traditional norms, offering
       clothing that is not just a trend but a form of self-expression.
-    </p>
+    </p> -->
   </div>
   <div class="info__container__image"></div>
 </section>
