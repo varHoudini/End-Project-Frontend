@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+.red {
+  color: red;
+}
+
 /*header*/
 header {
   top: 0;

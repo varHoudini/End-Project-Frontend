@@ -2,9 +2,9 @@
   <div class="header__container">
     <div class="header__text">
       <h2>Welkom bij</h2>
-      <h1>MADfashion</h1>
+      <h1>MAD<span class="red">Fashion</span></h1>
       <p>
-        MADfashion is a clothing brand that focuses on providing fashion and
+        MADFashion is a clothing brand that focuses on providing fashion and
         quality at affordable prices.
       </p>
     </div>
@@ -19,11 +19,16 @@
 
 <section class="info__container">
   <div class="info__container__text">
-    <h1>MADfashion</h1>
+    <h1>MAD<span class="red">Fashion</span></h1>
+    <!-- {{newsletterContents | json}} -->
     <div>
-      @if (newsletterContent) {
-        <h2>{{ newsletterContent.title }}</h2>
-        <p>{{ newsletterContent.content }}</p>
+      @if (newsletterContents) {
+        @for (content of newsletterContents; track content.id) {
+          <div>
+            <h2>{{ content.title }}</h2>
+            <p>{{ content.content }}</p>
+          </div>
+        }
       }
     </div>
     <!-- <h2>a revolutionary clothing brand</h2>
