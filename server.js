@@ -87,10 +87,10 @@ app.get('/api/users', (req, res) => {
 });
 
 // Voorbeeld van een GET-endpoint voor /api/genders
-app.get('/api/gender', (req, res) => {
-  console.log('Verzoek ontvangen op /api/gender');
+app.get('/api/genders', (req, res) => {
+  console.log('Verzoek ontvangen op /api/genders');
 
-  const query = 'SELECT * FROM gender';
+  const query = 'SELECT * FROM genders';
 
   db.query(query, (err, results) => {
     if (err) {
