@@ -7,6 +7,7 @@ import { KidsComponent } from './producten/kids/kids.component';
 import { HerenComponent } from './producten/heren/heren.component';
 import { DamesComponent } from './producten/dames/dames.component';
 import { ProductenComponent } from './producten/producten.component';
+import { RegisterComponent } from './register/register.component';
 
 export const routes: Routes = [
   {
@@ -45,5 +46,9 @@ export const routes: Routes = [
   {
     path: 'dames',
     component: DamesComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
   },
 ];
