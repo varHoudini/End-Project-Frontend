@@ -2,8 +2,9 @@
 
 <section id="container">
   <h1>&bull; Sign in &bull;</h1>
+  <p *ngIf="errorMessage" class="error-message">{{ errorMessage }} </p>
 
-  <form action="#" method="post" id="login_form">
+  <form (ngSubmit)="login()" id="login_form">
     <div class="username">
       <label for="username"></label>
       <input
@@ -12,6 +13,7 @@
         name="Username"
         id="username_input"
         required
+        [(ngModel)]="username"
       />
     </div>
 
@@ -23,11 +25,12 @@
         name="password"
         id="password_input"
         required
+        [(ngModel)]="first_name"
       />
     </div>
 
     <div class="login">
-      <input type="submit" value="Login" id="form_button"/>
+      <button type="submit">Login</button>
     </div>
 
     <div class="no-account">
