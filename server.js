@@ -103,6 +103,23 @@ app.get('/api/users', (req, res) => {
   });
 });
 
+// GET-endpoint voor /api/users
+app.get('/api/users/account', (req, res) => {
+  console.log('Verzoek ontvangen op /api/users/account');
+
+  const query = 'SELECT * FROM userAccount';
+
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error('MySQL-queryfout:', err);
+      res.status(500).send('Interne serverfout');
+    } else {
+      console.log('Queryresultaten:', results);
+      res.json(results);
+    }
+  });
+});
+
 // GET-endpoint voor /api/products
 app.get('/api/products', (req, res) => {
   console.log('Verzoek ontvangen op /api/products');
@@ -161,5 +178,3 @@ app.listen(port, () => {
   console.log(`Server draait op poort ${port}`);
   connectToDatabase(); // Maak verbinding met MySQL wanneer de server start
 });
-
-

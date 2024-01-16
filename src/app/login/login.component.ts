@@ -12,9 +12,9 @@ import { CommonModule } from '@angular/common';
 })
 export class LoginComponent {
   userAccounts: any;
-  url = 'http://localhost:3000/api/users';
-  username: string = '';
-  first_name: string = '';
+  url = 'http://localhost:3000/api/users/account';
+  username_id: string = '';
+  password_hash: string = '';
   errorMessage: string = '';
 
   constructor(private http: HttpClient) {}
@@ -22,7 +22,7 @@ export class LoginComponent {
   login(): void {
     this.errorMessage = ''; // Reset error message
 
-    this.http.post(this.url, { username: this.username, first_name: this.first_name })
+    this.http.post(this.url, { username: this.username_id, password: this.password_hash })
       .subscribe(
         (response: any) => {
           console.log(response);
