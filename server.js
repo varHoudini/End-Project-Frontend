@@ -103,11 +103,27 @@ app.get('/api/users', (req, res) => {
   });
 });
 
-// Voorbeeld van een GET-endpoint voor /api/genders
-app.get('/api/genders', (req, res) => {
-  console.log('Verzoek ontvangen op /api/genders');
+app.get('/api/products', (req, res) => {
+  console.log('Verzoek ontvangen op /api/products');
 
-  const query = 'SELECT * FROM genders';
+  const query = 'SELECT * FROM products WHERE gender = "Heren";';
+
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error('MySQL-queryfout:', err);
+      res.status(500).send('Interne serverfout');
+    } else {
+      console.log('Queryresultaten:', results);
+      res.json(results);
+    }
+  });
+});
+
+app.get('/api/productsh', (req, res) => {
+  console.log('Verzoek ontvangen op /api/products');
+
+  const query = 'SELECT * FROM products WHERE gender IN ("Heren", "Unisex");';
+
 
   db.query(query, (err, results) => {
     if (err) {

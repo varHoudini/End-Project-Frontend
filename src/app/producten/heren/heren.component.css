@@ -194,17 +194,77 @@ section {
 }
 
 .clothes__container__items {
-  display: grid;
-  margin-top: 20px;
-  text-align: center;
-  grid-column-gap: 10px;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.item_img {
-  height: 300px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: url(assets/accessoiresM.webp);
+.clothes__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.clothes_box {
+  width: 250px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.product_box {
+  display: flex;
+  flex-direction: column;
+}
+
+.product_image {
+  width: 100%;
+  height: 150px;
+  height: auto;
+  border-bottom: 1px solid #ddd;
+}
+
+.product_info {
+  padding: 10px;
+}
+
+.product_brand {
+  margin: 0;
+  color: #333;
+  font-size: 14px;
+}
+
+.product_name {
+  margin: 5px 0;
+  color: #444;
+  font-size: 16px;
+}
+
+.product_buy {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.product_price {
+  margin: 0;
+  color: #e44d26;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.add_to_cart_button {
+  padding: 8px 16px;
+  background-color: #e44d26;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add_to_cart_button:hover {
+  background-color: #333;
 }
