@@ -180,7 +180,6 @@ section {
 /*kleren*/
 .clothes_container {
   text-align: left;
-  border: 2px solid red;
   grid-column-end: 5;
   grid-column-start: 2;
 }
@@ -250,14 +249,14 @@ section {
 
 .product_price {
   margin: 0;
-  color: #e44d26;
+  color: #444;
   font-size: 18px;
   font-weight: bold;
 }
 
 .add_to_cart_button {
   padding: 8px 16px;
-  background-color: #e44d26;
+  background-color: #e70a0a;
   color: #fff;
   border: none;
   border-radius: 4px;

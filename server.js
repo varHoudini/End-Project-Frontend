@@ -86,7 +86,7 @@ app.get('/api/newsletter', (req, res) => {
   });
 });
 
-// Voorbeeld van een GET-endpoint voor /api/users
+// GET-endpoint voor /api/users
 app.get('/api/users', (req, res) => {
   console.log('Verzoek ontvangen op /api/users');
 
@@ -103,6 +103,7 @@ app.get('/api/users', (req, res) => {
   });
 });
 
+// GET-endpoint voor /api/products
 app.get('/api/products', (req, res) => {
   console.log('Verzoek ontvangen op /api/products');
 
@@ -119,11 +120,11 @@ app.get('/api/products', (req, res) => {
   });
 });
 
+// GET-endpoint voor /api/products Heren
 app.get('/api/productsh', (req, res) => {
   console.log('Verzoek ontvangen op /api/products');
 
   const query = 'SELECT * FROM products WHERE gender IN ("Heren", "Unisex");';
-
 
   db.query(query, (err, results) => {
     if (err) {
@@ -136,8 +137,29 @@ app.get('/api/productsh', (req, res) => {
   });
 });
 
+// POST-endpoint voor /api/users register
+app.post('/api/usersregister', (req, res) => {
+  console.log('Verzoek ontvangen op /api/usersregister');
+
+  const userData = req.body;
+
+  const query = 'INSERT INTO users SET ?';
+
+  db.query(query, userData, (err, results) => {
+    if (err) {
+      console.error('MySQL-queryfout:', err);
+      res.status(500).send('Interne serverfout');
+    } else {
+      console.log('Gebruiker succesvol toegevoegd:', results);
+      res.json({ message: 'Gebruiker succesvol toegevoegd', userId: results.insertId });
+    }
+  });
+});
+
 // Start de server
 app.listen(port, () => {
   console.log(`Server draait op poort ${port}`);
   connectToDatabase(); // Maak verbinding met MySQL wanneer de server start
 });
+
+
