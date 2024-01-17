@@ -8,6 +8,7 @@ import { HerenComponent } from './producten/heren/heren.component';
 import { DamesComponent } from './producten/dames/dames.component';
 import { ProductenComponent } from './producten/producten.component';
 import { RegisterComponent } from './register/register.component';
+import { CartComponent } from './cart/cart.component';
 
 export const routes: Routes = [
   {
@@ -50,5 +51,9 @@ export const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
+  },
+  {
+    path: 'cart',
+    component: CartComponent,
   },
 ];

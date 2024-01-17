@@ -42,24 +42,32 @@ header {
   text-decoration: none;
 }
 
-.header__cart {
+.header__cart a {
   display: grid;
   color: white;
   font-size: 10px;
   text-align: center;
   align-items: center;
   grid-template-columns: repeat(3, 1fr);
+  position: relative;
+  left: 30%;
+  padding-top: 2px;
 }
-.header__cart h1 {
-  grid-column-end: 3;
-  grid-column-start: 1;
-}
+
 .header__cart span {
-  width: 20px;
-  height: 20px;
-  font-size: 15px;
-  padding-top: 5px;
-  border: 1px solid white;
+  display: flex;
+  width: 15px;
+  font-size: 10px;
+  color: white;
+  height: 15px;
+  background-color: red;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 55%;
+  left: 83%;
 }
 
 .header__login a {
@@ -71,7 +79,7 @@ header {
   background: black;
   text-decoration: none;
   border: 1px solid white;
-  transition: .5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 .header__login a:hover {
   color: black;
@@ -192,7 +200,6 @@ footer {
 .footer__copyright__container span {
   font-size: 10px;
 }
-
 
 .header__cart svg {
   width: 23px;
