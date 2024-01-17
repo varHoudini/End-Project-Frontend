@@ -3,11 +3,12 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css'],
 })
@@ -35,8 +36,19 @@ export class AdminComponent {
     });
   }
 
+  isInvalid(controlName: string): boolean {
+    const control = this.productForm.get(controlName)!;
+    return (
+      !!control &&
+      (control.invalid ||
+        ((control.dirty || control.touched) && !control.valid))
+    );
+  }
+
   async addProduct() {
-    console.log('Form submitted');
+    Object.values(this.productForm.controls).forEach((control) => {
+      control.markAsTouched();
+    });
 
     if (this.productForm.invalid) {
       console.log('Invalid form');
@@ -48,6 +60,7 @@ export class AdminComponent {
       alert(`Product ${this.productForm.value.product_name} has been added`);
 
       //form values - controle
+      console.log('Form submitted');
       console.log('Form values:', this.productForm.value);
 
       //leeghalen

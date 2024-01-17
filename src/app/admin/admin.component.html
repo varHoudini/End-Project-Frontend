@@ -19,58 +19,94 @@
       <h2>Add Product</h2>
       <!-- admin.component.html -->
       <form [formGroup]="productForm" (ngSubmit)="addProduct()">
-        <label for="product-name">Product Name:</label>
+        <!-- Product Name -->
+        <label for="product-name" [class.error]="isInvalid('product_name')"
+          >Product Name:</label
+        >
         <input
           type="text"
           id="product-name"
           formControlName="product_name"
           required
+          [class.error-input]="isInvalid('product_name')"
         />
 
-        <label for="product-description">Description:</label>
+        <!-- Description -->
+        <label
+          for="product-description"
+          [class.error]="isInvalid('product_description')"
+          >Description:</label
+        >
         <textarea
           id="product-description"
           formControlName="product_description"
           required
+          [class.error-input]="isInvalid('product_description')"
         ></textarea>
 
-        <label for="product-price">Price:</label>
+        <!-- Price -->
+        <label for="product-price" [class.error]="isInvalid('product_price')"
+          >Price:</label
+        >
         <input
           type="number"
           id="product-price"
           formControlName="product_price"
           step="0.01"
           required
+          [class.error-input]="isInvalid('product_price')"
         />
 
-        <label for="product-image">Image URL:</label>
+        <!-- Image URL -->
+        <label for="product-image" [class.error]="isInvalid('product_image')"
+          >Image URL:</label
+        >
         <input
           type="text"
           id="product-image"
           formControlName="product_image"
           required
+          [class.error-input]="isInvalid('product_image')"
         />
 
-        <label for="product-gender">Gender:</label>
-        <select id="product-gender" formControlName="product_gender" required>
+        <!-- Gender -->
+        <label for="product-gender" [class.error]="isInvalid('product_gender')"
+          >Gender:</label
+        >
+        <select
+          id="product-gender"
+          formControlName="product_gender"
+          required
+          [class.error-input]="isInvalid('product_gender')"
+        >
           <option value="heren">Heren</option>
           <option value="dames">Dames</option>
           <option value="kids">Kids</option>
         </select>
 
-        <label for="product-stock">Stock:</label>
+        <!-- Stock -->
+        <label for="product-stock" [class.error]="isInvalid('product_stock')"
+          >Stock:</label
+        >
         <input
           type="number"
           id="product-stock"
           formControlName="product_stock"
           required
+          [class.error-input]="isInvalid('product_stock')"
         />
 
-        <label for="product-category">Category ID:</label>
+        <!-- Category ID -->
+        <label
+          for="product-category"
+          [class.error]="isInvalid('product_category')"
+          >Category ID:</label
+        >
         <select
           id="product-category"
           formControlName="product_category"
           required
+          [class.error-input]="isInvalid('product_category')"
         >
           <option value="1" id="1">Schoenen</option>
           <option value="2" id="2">Dress</option>
@@ -79,15 +115,20 @@
           <option value="5" id="5">Accessories</option>
         </select>
 
-        <label for="product-weight">Weight:</label>
+        <!-- Weight -->
+        <label for="product-weight" [class.error]="isInvalid('product_weight')"
+          >Weight:</label
+        >
         <input
           type="number"
           id="product-weight"
           formControlName="product_weight"
           step="0.01"
           required
+          [class.error-input]="isInvalid('product_weight')"
         />
 
+        <!-- Brand -->
         <label for="product-brand">Brand:</label>
         <input
           type="text"
