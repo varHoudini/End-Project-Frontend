@@ -1,63 +1,105 @@
-
 <div class="container">
   <div class="side-bar">
-      <ul>
-          <li><a href="/admin/producten-beheer">Producten</a></li>
-          <li><a href="/admin/orders">Orders</a></li>
-          <li><a href="/admin/klanten">Klanten</a></li>
-          <li><a href="/admin/instellingen">Instellingen</a></li>
-          <li><a href="/admin/nieuwsbrief">Nieuwsbrief</a></li>
-          <li><a href="/admin/logout" class="red">Uitloggen</a></li>
-      </ul>
+    <ul>
+      <li><a href="/admin/producten-beheer">Producten</a></li>
+      <li><a href="/admin/orders">Orders</a></li>
+      <li><a href="/admin/klanten">Klanten</a></li>
+      <li><a href="/admin/instellingen">Instellingen</a></li>
+      <li><a href="/admin/nieuwsbrief">Nieuwsbrief</a></li>
+      <li><a href="/admin/logout" class="red">Uitloggen</a></li>
+    </ul>
   </div>
 
   <div class="main-content">
     <div class="admin-cp">
       <h1>Admin <span class="red">Control Panel</span></h1>
     </div>
-      <!-- Add Product Section -->
-      <div class="product-section">
-          <h2>Add Product</h2>
-          <!-- admin.component.html -->
-        <form [formGroup]="productForm" (ngSubmit)="addProduct()">
-          <label for="product-name">Product Name:</label>
-          <input type="text" id="product-name" formControlName="product_name" required>
+    <!-- Add Product Section -->
+    <div class="product-section">
+      <h2>Add Product</h2>
+      <!-- admin.component.html -->
+      <form [formGroup]="productForm" (ngSubmit)="addProduct()">
+        <label for="product-name">Product Name:</label>
+        <input
+          type="text"
+          id="product-name"
+          formControlName="product_name"
+          required
+        />
 
-          <label for="product-description">Description:</label>
-          <textarea id="product-description" formControlName="product_description" required></textarea>
+        <label for="product-description">Description:</label>
+        <textarea
+          id="product-description"
+          formControlName="product_description"
+          required
+        ></textarea>
 
-          <label for="product-price">Price:</label>
-          <input type="number" id="product-price" formControlName="product_price" step="0.01" required>
+        <label for="product-price">Price:</label>
+        <input
+          type="number"
+          id="product-price"
+          formControlName="product_price"
+          step="0.01"
+          required
+        />
 
-          <label for="product-image">Image URL:</label>
-          <input type="text" id="product-image" formControlName="product_image" required>
+        <label for="product-image">Image URL:</label>
+        <input
+          type="text"
+          id="product-image"
+          formControlName="product_image"
+          required
+        />
 
-          <label for="product-gender">Gender:</label>
-          <select id="product-gender" formControlName="product_gender" required>
-            <option value="heren">Heren</option>
-            <option value="dames">Dames</option>
-            <option value="kids">Kids</option>
-          </select>
+        <label for="product-gender">Gender:</label>
+        <select id="product-gender" formControlName="product_gender" required>
+          <option value="heren">Heren</option>
+          <option value="dames">Dames</option>
+          <option value="kids">Kids</option>
+        </select>
 
-          <label for="product-stock">Stock:</label>
-          <input type="number" id="product-stock" formControlName="product_stock" required>
+        <label for="product-stock">Stock:</label>
+        <input
+          type="number"
+          id="product-stock"
+          formControlName="product_stock"
+          required
+        />
 
-          <label for="product-category">Category ID:</label>
-          <select id="product-category" formControlName="product_category" required>
-            <option value="1" id="1">Schoenen</option>
-            <option value="2" id="2">Dress</option>
-            <option value="3" id="3">Shirts</option>
-            <option value="4" id="4">Sweaters</option>
-            <option value="5" id="5">Accessories</option>
-          </select>
+        <label for="product-category">Category ID:</label>
+        <select
+          id="product-category"
+          formControlName="product_category"
+          required
+        >
+          <option value="1" id="1">Schoenen</option>
+          <option value="2" id="2">Dress</option>
+          <option value="3" id="3">Shirts</option>
+          <option value="4" id="4">Sweaters</option>
+          <option value="5" id="5">Accessories</option>
+        </select>
 
-          <label for="product-weight">Weight:</label>
-          <input type="number" id="product-weight" formControlName="product_weight" step="0.01" required>
+        <label for="product-weight">Weight:</label>
+        <input
+          type="number"
+          id="product-weight"
+          formControlName="product_weight"
+          step="0.01"
+          required
+        />
 
-          <label for="product-brand">Brand:</label>
-          <input type="text" id="product-brand" formControlName="product_brand" required>
+        <label for="product-brand">Brand:</label>
+        <input
+          type="text"
+          id="product-brand"
+          formControlName="product_brand"
+          readonly
+          placeholder="MC"
+          value="MC"
+        />
 
-          <button type="submit">Add Product</button>
-        </form>
+        <button type="submit">Add Product</button>
+      </form>
+    </div>
   </div>
 </div>

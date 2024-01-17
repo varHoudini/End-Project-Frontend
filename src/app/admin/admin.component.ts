@@ -30,25 +30,27 @@ export class AdminComponent {
         '',
         [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)],
       ],
-      product_brand: ['', Validators.required],
+      //default value voor product_brand is "MC"
+      product_brand: ['MC', Validators.required],
     });
   }
 
   async addProduct() {
-    console.log('Inside addProduct method');
+    console.log('Form submitted');
+
     if (this.productForm.invalid) {
       console.log('Invalid form');
       return;
     }
 
     try {
-      // Display an alert with the product name
+      //alert met product name & toegevoegd
       alert(`Product ${this.productForm.value.product_name} has been added`);
 
-      // Log the form values
+      //form values - controle
       console.log('Form values:', this.productForm.value);
 
-      // Clear the form after successful submission
+      //leeghalen
       this.productForm.reset();
     } catch (error) {
       console.error(error);
