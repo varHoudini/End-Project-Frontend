@@ -2,7 +2,7 @@
 
 <section id="container">
   <h1>&bull; Sign in &bull;</h1>
-  <p *ngIf="errorMessage" class="error-message">{{ errorMessage }} </p>
+  <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
 
   <form (ngSubmit)="login()" id="login_form">
     <div class="username">
@@ -28,7 +28,7 @@
     </div>
 
     <div class="login">
-      <button type="submit">Login</button>
+      <button type="submit" id="form_button">Login</button>
     </div>
 
     <div class="no-account">
