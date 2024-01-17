@@ -51,7 +51,7 @@ header {
   grid-template-columns: repeat(3, 1fr);
   position: relative;
   left: 30%;
-  padding-top: 2px;
+  padding-top: 5px;
 }
 
 .header__cart span {
@@ -65,9 +65,9 @@ header {
   align-items: center;
   color: white;
   border-radius: 50%;
-  position: absolute;
-  top: 55%;
-  left: 83%;
+  position: relative;
+  margin-top: -8px;
+  margin-left: 58px;
 }
 
 .header__login a {
