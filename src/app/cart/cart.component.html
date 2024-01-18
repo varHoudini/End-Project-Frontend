@@ -1,51 +1,18 @@
 <div class="cart">
   <h2>Your Cart</h2>
 
-  <ul>
-    <li>
-      <img src="product1.jpg" alt="Product 1" />
-
-      <p>beschrijving</p>
-
-      <span>$10.00</span>
-
-      <button class="remove-item">x</button>
-    </li>
-
-    <li>
-      <img src="product2.jpg" alt="Product 2" />
-
-      <p>beschrijving</p>
-
-      <span>$20.00</span>
-
-      <button class="remove-item">x</button>
-    </li>
-
-    <li>
-      <img src="product2.jpg" alt="Product 3" />
-
-      <p>beschrijving</p>
-
-      <span>$20.00</span>
-
-      <button class="remove-item">x</button>
+  <ul class="cart-items">
+    <li ngfor="let cartItem of cartItems">
+      <img src="{{ cartItem.image }}" alt="{{ cartItem.name }}" />
+      <p>{{ cartItem.name }}</p>
+      <span>{{ cartItem.price }}</span>
+      <button (click)="removeCartItem(cartItem)">Remove</button>
     </li>
   </ul>
 
-  <div class="subtotal">
-    <p>Subtotal: 30.00</p>
+  <div class="cart-total">
+    <p>Total: {{ totalPrice }}</p>
   </div>
 
-  <p><br /></p>
-
-  <p><br /></p>
-
-  <p><br /></p>
-
-  <p><br /></p>
-
-  <p><br /></p>
-
-  <button class="checkout">Checkout</button>
+  <a href="#">Checkout</a>
 </div>

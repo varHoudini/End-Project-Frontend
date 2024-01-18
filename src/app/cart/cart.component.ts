@@ -5,8 +5,12 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './cart.component.html',
-  styleUrl: './cart.component.css'
+  styleUrl: './cart.component.css',
 })
 export class CartComponent {
-
+  cartItem: any;
+  removeCartItem(_t5: any) {
+    throw new Error('Method not implemented.');
+  }
+  totalPrice: any;
 }
