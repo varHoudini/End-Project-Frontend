@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Product } from './product.module';
 
 @Component({
   selector: 'app-admin',
@@ -62,6 +63,30 @@ export class AdminComponent {
       //form values - controle
       console.log('Form submitted');
       console.log('Form values:', this.productForm.value);
+
+      //de product data voorbereiden
+      const productData = this.productForm.value;
+
+      //product data omvormen naar JSON
+      const productJson = JSON.stringify(productData);
+
+      //creert een HTTP POST request
+      const response = await this.http.post<Product>(
+        'http://localhost:3000/api/products',
+        productData
+      ).toPromise;
+
+      console.log('Backend Response:', response);
+
+      if (response) {
+        console.log('Product added successfully:', response);
+        alert(
+          `Product ${productData.product_name} has been added successfully`
+        );
+        this.productForm.reset();
+      } else {
+        console.error('Failed to add product:');
+      }
 
       //leeghalen
       this.productForm.reset();
