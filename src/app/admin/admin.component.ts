@@ -58,7 +58,7 @@ export class AdminComponent {
 
     try {
       //alert met product name & toegevoegd
-      alert(`Product ${this.productForm.value.product_name} has been added`);
+      //alert(`Product ${this.productForm.value.product_name} has been added`);
 
       //form values - controle
       console.log('Form submitted');
@@ -67,11 +67,8 @@ export class AdminComponent {
       //de product data voorbereiden
       const productData = this.productForm.value;
 
-      //product data omvormen naar JSON
-      const productJson = JSON.stringify(productData);
-
       //creert een HTTP POST request
-      const response = await this.http.post<Product>(
+      const response = await this.http.post<any>(
         'http://localhost:3000/api/products',
         productData
       ).toPromise;

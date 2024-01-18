@@ -1,6 +1,6 @@
-const express = require('express');
-const mysql = require('mysql');
-const cors = require('cors');
+const express = require("express");
+const mysql = require("mysql");
+const cors = require("cors");
 
 const app = express();
 const port = 3000; // Je kunt elke beschikbare poort gebruiken
@@ -8,10 +8,10 @@ const port = 3000; // Je kunt elke beschikbare poort gebruiken
 // Functie om een nieuwe MySQL-verbinding te maken
 function createDBConnection() {
   return mysql.createConnection({
-    host: 'ID324796_s24css.db.webhosting.be',
-    user: 'ID324796_s24css',
-    password: 'v9Q3rQ75Wi6ikN4svT42',
-    database: 'ID324796_s24css',
+    host: "ID324796_s24css.db.webhosting.be",
+    user: "ID324796_s24css",
+    password: "v9Q3rQ75Wi6ikN4svT42",
+    database: "ID324796_s24css",
     connectTimeout: 20000, // Pas de waarde aan indien nodig
   });
 }
@@ -25,17 +25,17 @@ function connectToDatabase() {
 
   db.connect((err) => {
     if (err) {
-      console.error('MySQL verbindingsfout:', err);
+      console.error("MySQL verbindingsfout:", err);
       setTimeout(connectToDatabase, 2000); // Probeer opnieuw na 2 seconden
     } else {
-      console.log('Verbonden met MySQL-database');
+      console.log("Verbonden met MySQL-database");
     }
   });
 
   // Behandel MySQL-verbindingsfouten
-  db.on('error', (err) => {
-    console.error('MySQL verbindingsfout:', err);
-    if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+  db.on("error", (err) => {
+    console.error("MySQL verbindingsfout:", err);
+    if (err.code === "PROTOCOL_CONNECTION_LOST") {
       // Probeer opnieuw verbinding te maken als de verbinding is verbroken
       connectToDatabase();
     } else {
@@ -48,144 +48,169 @@ function connectToDatabase() {
 app.use(cors());
 
 // Voorbeeld van een GET-endpoint voor de root-URL
-app.get('/', (req, res) => {
-  res.send('Welkom bij de root-URL!');
+app.get("/", (req, res) => {
+  res.send("Welkom bij de root-URL!");
 });
 
 // Voorbeeld van een GET-endpoint voor /api/products
-app.get('/api/products', (req, res) => {
-  console.log('Verzoek ontvangen op /api/products');
+app.get("/api/products", (req, res) => {
+  console.log("Verzoek ontvangen op /api/products");
 
-  const query = 'SELECT * FROM products';
+  const query = "SELECT * FROM products";
 
   db.query(query, (err, results) => {
     if (err) {
-      console.error('MySQL-queryfout:', err);
-      res.status(500).send('Interne serverfout');
+      console.error("MySQL-queryfout:", err);
+      res.status(500).send("Interne serverfout");
     } else {
-      console.log('Queryresultaten:', results);
+      console.log("Queryresultaten:", results);
       res.json(results);
     }
   });
 });
 
 // Endpoint for fetching newsletter data
-app.get('/api/newsletter', (req, res) => {
-  console.log('Verzoek ontvangen op /api/newsletter');
+app.get("/api/newsletter", (req, res) => {
+  console.log("Verzoek ontvangen op /api/newsletter");
 
-  const query = 'SELECT * FROM newsletter';
+  const query = "SELECT * FROM newsletter";
 
   db.query(query, (err, results) => {
     if (err) {
-      console.error('MySQL-queryfout:', err);
-      res.status(500).send('Interne serverfout');
+      console.error("MySQL-queryfout:", err);
+      res.status(500).send("Interne serverfout");
     } else {
-      console.log('Queryresultaten:', results);
+      console.log("Queryresultaten:", results);
       res.json(results);
     }
   });
 });
 
 // GET-endpoint voor /api/users
-app.get('/api/users', (req, res) => {
-  console.log('Verzoek ontvangen op /api/users');
+app.get("/api/users", (req, res) => {
+  console.log("Verzoek ontvangen op /api/users");
 
-  const query = 'SELECT * FROM users';
+  const query = "SELECT * FROM users";
 
   db.query(query, (err, results) => {
     if (err) {
-      console.error('MySQL-queryfout:', err);
-      res.status(500).send('Interne serverfout');
+      console.error("MySQL-queryfout:", err);
+      res.status(500).send("Interne serverfout");
     } else {
-      console.log('Queryresultaten:', results);
+      console.log("Queryresultaten:", results);
       res.json(results);
     }
   });
 });
 
 // GET-endpoint voor /api/users
-app.get('/api/users/account', (req, res) => {
-  console.log('Verzoek ontvangen op /api/users/account');
+app.get("/api/users/account", (req, res) => {
+  console.log("Verzoek ontvangen op /api/users/account");
 
-  const query = 'SELECT * FROM userAccount';
+  const query = "SELECT * FROM userAccount";
 
   db.query(query, (err, results) => {
     if (err) {
-      console.error('MySQL-queryfout:', err);
-      res.status(500).send('Interne serverfout');
+      console.error("MySQL-queryfout:", err);
+      res.status(500).send("Interne serverfout");
     } else {
-      console.log('Queryresultaten:', results);
+      console.log("Queryresultaten:", results);
       res.json(results);
     }
   });
 });
 
 // GET-endpoint voor /api/products
-app.get('/api/products', (req, res) => {
-  console.log('Verzoek ontvangen op /api/products');
+app.get("/api/products", (req, res) => {
+  console.log("Verzoek ontvangen op /api/products");
 
   const query = 'SELECT * FROM products WHERE gender = "Heren";';
 
   db.query(query, (err, results) => {
     if (err) {
-      console.error('MySQL-queryfout:', err);
-      res.status(500).send('Interne serverfout');
+      console.error("MySQL-queryfout:", err);
+      res.status(500).send("Interne serverfout");
     } else {
-      console.log('Queryresultaten:', results);
+      console.log("Queryresultaten:", results);
       res.json(results);
     }
   });
 });
 
 // GET-endpoint voor /api/products Heren
-app.get('/api/productsh', (req, res) => {
-  console.log('Verzoek ontvangen op /api/products');
+app.get("/api/productsh", (req, res) => {
+  console.log("Verzoek ontvangen op /api/products");
 
   const query = 'SELECT * FROM products WHERE gender IN ("Heren", "Unisex");';
 
   db.query(query, (err, results) => {
     if (err) {
-      console.error('MySQL-queryfout:', err);
-      res.status(500).send('Interne serverfout');
+      console.error("MySQL-queryfout:", err);
+      res.status(500).send("Interne serverfout");
     } else {
-      console.log('Queryresultaten:', results);
+      console.log("Queryresultaten:", results);
       res.json(results);
     }
   });
 });
 
 // GET-endpoint voor /api/products Dames
-app.get('/api/productsd', (req, res) => {
-  console.log('Verzoek ontvangen op /api/products');
+app.get("/api/productsd", (req, res) => {
+  console.log("Verzoek ontvangen op /api/products");
 
   const query = 'SELECT * FROM products WHERE gender IN ("Dames", "Unisex");';
 
   db.query(query, (err, results) => {
     if (err) {
-      console.error('MySQL-queryfout:', err);
-      res.status(500).send('Interne serverfout');
+      console.error("MySQL-queryfout:", err);
+      res.status(500).send("Interne serverfout");
     } else {
-      console.log('Queryresultaten:', results);
+      console.log("Queryresultaten:", results);
       res.json(results);
     }
   });
 });
 
 // POST-endpoint voor /api/users register
-app.post('/api/usersregister', (req, res) => {
-  console.log('Verzoek ontvangen op /api/usersregister');
+app.post("/api/usersregister", (req, res) => {
+  console.log("Verzoek ontvangen op /api/usersregister");
 
   const userData = req.body;
 
-  const query = 'INSERT INTO users SET ?';
+  const query = "INSERT INTO users SET ?";
 
   db.query(query, userData, (err, results) => {
     if (err) {
-      console.error('MySQL-queryfout:', err);
-      res.status(500).send('Interne serverfout');
+      console.error("MySQL-queryfout:", err);
+      res.status(500).send("Interne serverfout");
     } else {
-      console.log('Gebruiker succesvol toegevoegd:', results);
-      res.json({ message: 'Gebruiker succesvol toegevoegd', userId: results.insertId });
+      console.log("Gebruiker succesvol toegevoegd:", results);
+      res.json({
+        message: "Gebruiker succesvol toegevoegd",
+        userId: results.insertId,
+      });
+    }
+  });
+});
+
+// POST-endpoint voor /api/products (add product)
+app.post("/api/products", (req, res) => {
+  console.log("Verzoek ontvangen op /api/products (POST)");
+
+  const productData = req.body;
+
+  const query = "INSERT INTO products SET ?";
+
+  db.query(query, productData, (err, results) => {
+    if (err) {
+      console.error("MySQL-queryfout:", err);
+      res.status(500).send("Interne serverfout");
+    } else {
+      console.log("Product succesvol toegevoegd:", results);
+      res.json({
+        message: "Product succesvol toegevoegd",
+        productId: results.insertId,
+      });
     }
   });
 });
