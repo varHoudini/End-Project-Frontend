@@ -13,7 +13,6 @@
   position: fixed;
   margin-top: 8vh;
 }
-
 .side-bar a {
   display: block;
   padding: 10px;
@@ -23,12 +22,10 @@
   border-radius: 12px;
   transition: 0.3s ease-in-out;
 }
-
 .side-bar a:hover {
   color: white;
   background-color: #b11717;
 }
-
 .side-bar ul {
   list-style: none;
   padding: 0;
@@ -46,56 +43,106 @@
   align-items: center;
 }
 
-.admin-cp {
-  width: 400px;
-  background-color: #b5b5b55d;
-  border-radius: 12px;
+/*admin form design*/
+#container {
+  z-index: 1;
+  max-width: 768px;
+  position: relative;
+  margin: 0 auto 0 auto;
+  border: solid 3px black;
 }
 
-.admin-cp h1 {
+form {
+  padding: 37.5px;
+}
+
+h1 {
+  font-size: 25px;
+  font-weight: 700;
   text-align: center;
+  letter-spacing: 7px;
+  padding-bottom: 30px;
+  text-transform: uppercase;
 }
 
-.product-section {
-  margin-top: 20px;
+.name input::placeholder,
+.description textarea::placeholder,
+.price input::placeholder,
+.image input::placeholder,
+.stock input::placeholder,
+.weight input::placeholder {
+  color: black;
 }
 
-.product-section h2 {
-  color: #393939;
+.image,
+.gender,
+.category {
+  float: right;
+  width: 45%;
+}
+.price,
+.stock,
+.weight {
+  float: left;
+  width: 45%;
+}
+.name,
+.description {
+  width: 100%;
 }
 
-.product-section form {
-  display: grid;
-  gap: 10px;
+select {
+  outline: none;
+  -webkit-appearance: none;
+  background: url("https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-arrow-down-32.png")
+    no-repeat right;
+}
+textarea {
+  width: 100%;
+  resize: none;
+  height: 100px;
+  line-height: 150%;
 }
 
-.product-section label {
-  color: #616161;
-}
-
-.product-section input,
-.product-section textarea,
-.product-section select {
-  width: 500px;
-  padding: 8px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.product-section button {
-  background-color: #4caf50;
-  color: #fff;
-  padding: 10px;
+input[type="text"],
+[type="number"],
+select,
+textarea {
+  width: 100%;
   border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-  max-width: 500px;
+  font-size: 0.8em;
+  font-weight: 400;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+  box-sizing: border-box;
+  margin: 0em 0 1.875em 0;
+  text-transform: uppercase;
+  padding: 0.875em 0 0.875em 0;
+  border-bottom: solid 2px black;
+}
+input[type="text"]:focus,
+[type="number"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
 }
 
-.product-section button:hover {
-  background-color: #45a049;
+
+#form_button {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.875em;
+  padding: 20px 35px;
+  background: white;
+  transition: all 0.3s;
+  display: inline-block;
+  text-transform: uppercase;
+  border: solid 2px black;
+}
+#form_button:hover {
+  color: #f2f3eb;
+  background: black;
+  border: 2px solid white;
 }
 
 /*voor de error in forms*/
@@ -103,5 +150,5 @@
   color: red !important;
 }
 .error-input {
-  border: 1px solid red !important;
+  border-bottom: 2px solid red !important;
 }
