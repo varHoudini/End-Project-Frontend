@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './kids.component.html',
   styleUrl: './kids.component.css',
 })
-export class kidsComponent implements OnInit {
+export class KidsComponent implements OnInit {
   productskids: any;
   url = 'http://localhost:3000/api/productsk';
   constructor(private http: HttpClient) {}
