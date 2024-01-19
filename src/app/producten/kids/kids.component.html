@@ -6,7 +6,7 @@
     </div>
     <div class="header__button">
       <a href="/dames">SHOP DAMES</a>
-      <a href="/heren">SHOP HEREN</a>
+      <a href="/Kids">SHOP HEREN</a>
     </div>
   </div>
 </header>
@@ -67,7 +67,7 @@
     <div class="filter__container__categories">
       <h1>Categorieën</h1>
       <p>Dames</p>
-      <p>Mannen</p>
+      <p>Heren</p>
       <p>Kinderen</p>
     </div>
     <div class="filter__container__merken">
@@ -92,19 +92,24 @@
 
     <div class="clothes__container__items">
       <div class="clothes__items">
-        <div class="item_img"></div>
-        <p>cool item to keep you warm</p>
-        <button>buy</button>
-      </div>
-      <div class="clothes__items">
-        <div class="item_img"></div>
-        <p>cool item to keep you warm</p>
-        <button>buy</button>
-      </div>
-      <div class="clothes__items">
-        <div class="item_img"></div>
-        <p>cool item to keep you warm</p>
-        <button>buy</button>
+        <!-- {{ productskids | json }} -->
+        @if (productskids) { @for (product of productskids; track product.id) {
+        <div class="clothes_box">
+          <div class="product_box">
+            <img src="{{ product.image }}" alt="" class="product_image" />
+            <div class="product_info">
+              <p class="product_brand">{{ product.brand }}</p>
+              <h4 class="product_name">{{ product.name }}</h4>
+            </div>
+            <div class="product_buy">
+              <p class="product_price">
+                {{ product.price | currency : "EUR" }}
+              </p>
+              <button class="add_to_cart_button">Add To Cart</button>
+            </div>
+          </div>
+        </div>
+        } }
       </div>
     </div>
   </div>

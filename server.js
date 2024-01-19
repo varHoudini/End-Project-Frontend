@@ -161,6 +161,23 @@ app.get("/api/productsh", (req, res) => {
   });
 });
 
+// GET-endpoint voor /api/products Kids
+app.get("/api/productsk", (req, res) => {
+  console.log("Verzoek ontvangen op /api/products");
+
+  const query = 'SELECT * FROM products WHERE gender IN ("Kids-B", "Kids-G");';
+
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error("MySQL-queryfout:", err);
+      res.status(500).send("Interne serverfout");
+    } else {
+      console.log("Queryresultaten:", results);
+      res.json(results);
+    }
+  });
+});
+
 // GET-endpoint voor /api/products Dames
 app.get("/api/productsd", (req, res) => {
   console.log("Verzoek ontvangen op /api/products");
