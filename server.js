@@ -1,6 +1,7 @@
 const express = require("express");
 const mysql = require("mysql");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 
 const app = express();
 const port = 3000; // Je kunt elke beschikbare poort gebruiken
@@ -15,6 +16,12 @@ function createDBConnection() {
     connectTimeout: 20000, // Pas de waarde aan indien nodig
   });
 }
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
 
 // Initiële MySQL-verbinding
 let db = createDBConnection();
@@ -199,20 +206,36 @@ app.post("/api/products", (req, res) => {
 
   const productData = req.body;
 
-  const query = "INSERT INTO products SET ?";
+  const query =
+    "INSERT INTO products (name, description, price, image, gender, stock, category_id, weight, brand, Soort) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-  db.query(query, productData, (err, results) => {
-    if (err) {
-      console.error("MySQL-queryfout:", err);
-      res.status(500).send("Interne serverfout");
-    } else {
-      console.log("Product succesvol toegevoegd:", results);
-      res.json({
-        message: "Product succesvol toegevoegd",
-        productId: results.insertId,
-      });
+  db.query(
+    query,
+    [
+      productData.name,
+      productData.description,
+      productData.price,
+      productData.image,
+      productData.gender,
+      productData.stock,
+      productData.category_id,
+      productData.weight,
+      productData.brand,
+      productData.Soort,
+    ],
+    (err, results) => {
+      if (err) {
+        console.error("MySQL-queryfout:", err);
+        res.status(500).send("Interne serverfout");
+      } else {
+        console.log("Product succesvol toegevoegd:", results);
+        res.json({
+          message: "Product succesvol toegevoegd",
+          productId: results.insertId,
+        });
+      }
     }
-  });
+  );
 });
 
 // Start de server
