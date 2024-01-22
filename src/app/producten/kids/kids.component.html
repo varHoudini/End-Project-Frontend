@@ -1,9 +1,5 @@
 <header>
   <div class="header__container">
-    <div class="header__text">
-      <p>SOLDEN</p>
-      <p>TOT 50% KORTING</p>
-    </div>
     <div class="header__button">
       <a href="/dames">SHOP DAMES</a>
       <a href="/heren">SHOP HEREN</a>
@@ -65,16 +61,16 @@
 <section class="filter__clothes__container">
   <div class="filter__container">
     <div class="filter__container__categories">
-      <h2>Filter</h2>
-      <button (click)="filterBoys()">Jongens</button>
-      <button (click)="filterGirls()">Meisjes</button>
-    </div>
-    <div class="filter__container__merken">
-      <h1>MERKEN</h1>
-      <p>Merk1</p>
-      <p>Merk2</p>
-      <p>Merk3</p>
-      <p>Merk4</p>
+      <h1>Categories</h1>
+      <p (click)="filterByCategory(0)">All items</p>
+      <p (click)="filterByCategory(1)">Shoes</p>
+      <p (click)="filterByCategory(2)">Dresses</p>
+      <p (click)="filterByCategory(3)">T-shirts</p>
+      <p (click)="filterByCategory(4)">Sweaters</p>
+      <p (click)="filterByCategory(5)">Accessories</p>
+      <p (click)="filterByCategory(6)">Jackets</p>
+      <p (click)="filterByCategory(7)">Pants</p>
+      <p (click)="filterByCategory(8)">Skirts</p>
     </div>
   </div>
 
@@ -82,34 +78,33 @@
     <div class="clothes__container__filter">
       <label for="optie">Sorteer op:</label>
       <select name="optie" id="optie">
-        <option value="hoog">Hoog naar laag</option>
-        <option value="laag">Laag naar hoog</option>
-        <option value="collectie">Nieuwe collectie</option>
-        <option value="bestsellers">Bestsellers</option>
+        <option value="high">High to low</option>
+        <option value="low">Low to high</option>
+        <!-- <option value="collectie">Nieuwe collectie</option>
+        <option value="bestsellers">Bestsellers</option>-->
       </select>
     </div>
 
-    <div class="clothes__container__items">
-      <div class="clothes__items">
-        <!-- {{ productskids | json }} -->
-        @if (productskids) { @for (product of productskids; track product.id) {
-        <div class="clothes_box">
-          <div class="product_box">
-            <img src="{{ product.image }}" alt="" class="product_image" />
-            <div class="product_info">
-              <p class="product_brand">{{ product.brand }}</p>
-              <h4 class="product_name">{{ product.name }}</h4>
-            </div>
-            <div class="product_buy">
-              <p class="product_price">
-                {{ product.price | currency : "EUR" }}
-              </p>
-              <button class="add_to_cart_button">Add To Cart</button>
-            </div>
+    <div class="clothes__items">
+      <!-- {{ productskids | json }} -->
+      @if (filteredProducts) { @for (product of filteredProducts; track
+      product.id) {
+      <div class="clothes_box">
+        <div class="product_box">
+          <img src="{{ product.image }}" alt="" class="product_image" />
+          <div class="product_info">
+            <p class="product_brand">{{ product.brand }}</p>
+            <h4 class="product_name">{{ product.name }}</h4>
+          </div>
+          <div class="product_buy">
+            <p class="product_price">
+              {{ product.price | currency : "EUR" }}
+            </p>
+            <button class="add_to_cart_button">Add To Cart</button>
           </div>
         </div>
-        } }
       </div>
+      } }
     </div>
   </div>
 </section>

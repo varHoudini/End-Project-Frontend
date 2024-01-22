@@ -1,9 +1,5 @@
 <header>
   <div class="header__container">
-    <div class="header__text">
-      <p>SOLDEN</p>
-      <p>TOT 50% KORTING</p>
-    </div>
     <div class="header__button">
       <a href="/dames">SHOP DAMES</a>
       <a href="/kids">SHOP KIDS</a>
@@ -73,6 +69,7 @@
       <p (click)="filterByCategory(5)">Accessories</p>
       <p (click)="filterByCategory(6)">Jackets</p>
       <p (click)="filterByCategory(7)">Pants</p>
+      <p (click)="filterByCategory(9)">Exclusive Collection</p>
     </div>
   </div>
 
@@ -87,28 +84,28 @@
       </select>
     </div>
 
-    <div class="clothes__container__items">
-      <div class="clothes__items">
-        <!-- {{ productsHeren | json }} -->
-        @if (filteredProducts) { @for (product of filteredProducts; track
-        product.id) {
-        <div class="clothes_box">
-          <div class="product_box">
-            <img src="{{ product.image }}" alt="" class="product_image" />
-            <div class="product_info">
-              <p class="product_brand">{{ product.brand }}</p>
-              <h4 class="product_name">{{ product.name }}</h4>
-            </div>
-            <div class="product_buy">
-              <p class="product_price">
-                {{ product.price | currency : "EUR" }}
-              </p>
-              <button class="add_to_cart_button" (click)="addToCart(product)">Add To Cart</button>
-            </div>
+    <div class="clothes__items">
+      <!-- {{ productsHeren | json }} -->
+      @if (filteredProducts) { @for (product of filteredProducts; track
+      product.id) {
+      <div class="clothes_box">
+        <div class="product_box">
+          <img src="{{ product.image }}" alt="" class="product_image" />
+          <div class="product_info">
+            <p class="product_brand">{{ product.brand }}</p>
+            <h4 class="product_name">{{ product.name }}</h4>
+          </div>
+          <div class="product_buy">
+            <p class="product_price">
+              {{ product.price | currency : "EUR" }}
+            </p>
+            <button class="add_to_cart_button" (click)="addToCart(product)">
+              Add To Cart
+            </button>
           </div>
         </div>
-        } }
       </div>
+      } }
     </div>
   </div>
 </section>

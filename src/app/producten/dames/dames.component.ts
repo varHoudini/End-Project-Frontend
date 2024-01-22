@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
-////product opstelling database
+//product opstelling database - product
 interface Product {
   id: number;
   name: string;
@@ -20,6 +20,7 @@ interface Product {
   templateUrl: './dames.component.html',
   styleUrl: './dames.component.css',
 })
+
 //oproepen van de producten
 //api url gebruiken voor de filter categorie -> word in progress
 export class DamesComponent implements OnInit {
