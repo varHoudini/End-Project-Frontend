@@ -19,28 +19,26 @@ export class CartComponent implements OnInit {
 
   constructor(private cartService: CartService) {}
 
+  cartitems: product[] = [];
   ngOnInit(): void {
-    // Load initial cart items
-    this.menCartItems = this.cartService.getProducts('Heren');
-    this.womenCartItems = this.cartService.getProducts('Dames');
-    this.kidsCartItems = this.cartService.getProducts('Kids');
-  }
+    this.cartitems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+   }
 
   // Function to handle the "Add to Cart" button click for men's productss
   addToCartMen(products: product) {
     this.cartService.add(products, 'Heren');
-    this.menCartItems = this.cartService.getProducts('Heren');
+   // this.menCartItems = this.cartService.getProducts('Heren');
   }
 
   // Function to handle the "Add to Cart" button click for women's productss
   addToCartWomen(products: product) {
     this.cartService.add(products, 'Dames');
-    this.womenCartItems = this.cartService.getProducts('Dames');
+    //this.womenCartItems = this.cartService.getProducts('Dames');
   }
 
   // Function to handle the "Add to Cart" button click for kids' productss
   addToCartKids(products: product) {
     this.cartService.add(products, 'Kids');
-    this.kidsCartItems = this.cartService.getProducts('Kids');
+    //this.kidsCartItems = this.cartService.getProducts('Kids');
   }
 }

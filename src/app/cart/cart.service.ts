@@ -7,6 +7,7 @@ import { product } from './cart.model';
 export class CartService {
  private products: Map<string, product[]> = new Map<string, product[]>();
 
+ cartitems: product[] = [];
  add(product: product, category: string) {
     if (!this.products.has(category)) {
       this.products.set(category, []);
@@ -14,7 +15,9 @@ export class CartService {
     this.products.get(category)?.push(product);
  }
 
- getProducts(category: string): product[] {
-    return this.products.get(category) || [];
- }
+
+  ngOnInit(): void {
+   this.cartitems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+  }
+
 }

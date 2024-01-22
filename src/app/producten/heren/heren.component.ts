@@ -48,6 +48,13 @@ export class HerenComponent implements OnInit {
 
   // Function to handle the "Add to Cart" button click
   addToCart(product: product): void {
-    this.cartService.add(product, 'heren');
+    console.log('Product added to cart:', product);
+
+    // retrieve localstorage products
+    const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+    cartItems.push(product);
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    console.log('Cart items:', cartItems);
+
   }
 }
