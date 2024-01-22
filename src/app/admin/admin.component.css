@@ -2,42 +2,11 @@
   display: flex;
 }
 
-.side-bar {
-  width: 200px;
-  min-width: 200px;
-  height: 100vh;
-  background-color: #c5c5c5;
-  color: #fff;
-  padding: 20px;
-  box-sizing: border-box;
-  position: fixed;
-  margin-top: 8vh;
-}
-.side-bar a {
-  display: block;
-  padding: 10px;
-  text-decoration: none;
-  color: #515151;
-  font-size: 16px;
-  border-radius: 12px;
-  transition: 0.3s ease-in-out;
-}
-.side-bar a:hover {
-  color: white;
-  background-color: #b11717;
-}
-.side-bar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
 .main-content {
   flex: 1;
   padding: 20px;
   box-sizing: border-box;
   margin-top: 9vh;
-  margin-left: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -127,7 +96,6 @@ textarea:focus {
   outline: none;
 }
 
-
 #form_button {
   cursor: pointer;
   font-weight: bold;
@@ -138,6 +106,7 @@ textarea:focus {
   display: inline-block;
   text-transform: uppercase;
   border: solid 2px black;
+  margin-left: -50px;
 }
 #form_button:hover {
   color: #f2f3eb;
