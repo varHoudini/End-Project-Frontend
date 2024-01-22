@@ -1,1 +1,13 @@
-{{ cartitems | json }}
+<!-- {{ cartitems | json }} -->
+
+<div class="container">
+    <h1>Winkelwagen</h1>
+    <div class="items_container">
+        @for (item of cartitems; track item.id) {
+            <div class="item">
+                <p>{{ item.name }}</p>
+                <p>{{ item.price | currency : "EUR"}}</p>
+            </div>
+        }
+    </div>
+</div>
