@@ -19,6 +19,11 @@
                         <td><button class="remove-button" (click)="removeItem(item)">Remove</button></td>
                     </tr>
                 }
+                @if (cartitems.length > 0) {
+                    <tr>
+                        <td colspan="4">Total: {{ totalPrice() | currency : "EUR" }}</td>
+                    </tr>
+                }
                 @if (cartitems.length == 0) {
                     <tr>
                         <td colspan="4">Your cart is empty.</td>
