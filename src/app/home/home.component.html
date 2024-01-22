@@ -17,19 +17,31 @@
   </div>
 </header>
 
+<section class="campaign__container">
+  <div class="campaign__info">
+    <h3>
+      Elevate your style with the Borussia Mönchengladbach x MF Collection!
+      Embark on a journey where football passion meets fashion sophistication in
+      this exclusive collaboration between Borussia Mönchengladbach, MF Fashion,
+      and Puma.
+    </h3>
+    <p>#BMGxMF #PumaElegance #FashionMeetsFootball #StyleBeyondOrdinary</p>
+    <a class="campaign__button" href="/heren">Discover</a>
+  </div>
+</section>
+
 <section class="info__container">
   <div class="info__container__text">
     <h1>MAD<span class="red">Fashion</span></h1>
     <!-- {{newsletterContents | json}} -->
     <div>
-      @if (newsletterContents) {
-        @for (content of newsletterContents; track content.id) {
-          <div>
-            <h2>{{ content.title }}</h2>
-            <p>{{ content.content }}</p>
-          </div>
-        }
-      }
+      @if (newsletterContents) { @for (content of newsletterContents; track
+      content.id) {
+      <div>
+        <h2>{{ content.title }}</h2>
+        <p>{{ content.content }}</p>
+      </div>
+      } }
     </div>
     <!-- <h2>a revolutionary clothing brand</h2>
     <p>
