@@ -1,35 +1,47 @@
+<section class="witte__ruimte"></section>
+
 <div class="cart-container">
-    <div class="cart-item">
-        <h1>Shopping Cart</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>Product Image</th>
-                    <th>Product Name</th>
-                    <th>Price</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @for (item of cartitems; track item.id) {
-                    <tr class="item-row">
-                        <td><img src="{{ item.image }}" alt="{{ item.name }}" class="product-image"></td>
-                        <td>{{ item.name }}</td>
-                        <td>{{ item.price | currency : "EUR" }}</td>
-                        <td><button class="remove-button" (click)="removeItem(item)">Remove</button></td>
-                    </tr>
-                }
-                @if (cartitems.length > 0) {
-                    <tr>
-                        <td colspan="4">Total: {{ totalPrice() | currency : "EUR" }}</td>
-                    </tr>
-                }
-                @if (cartitems.length == 0) {
-                    <tr>
-                        <td colspan="4">Your cart is empty.</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+  <div class="cart-item">
+    <h1>&bull; Shopping Cart &bull;</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Product Image</th>
+          <th>Product Name</th>
+          <th>Price</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of cartitems; track item.id) {
+        <tr class="item-row">
+          <td>
+            <img
+              src="{{ item.image }}"
+              alt="{{ item.name }}"
+              class="product-image"
+            />
+          </td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.price | currency : "EUR" }}</td>
+          <td>
+            <button class="remove-button" (click)="removeItem(item)">
+              Remove
+            </button>
+          </td>
+        </tr>
+        } @if (cartitems.length > 0) {
+        <tr>
+          <button type="button" class="btn btn-primary">Checkout</button>
+
+          <td id="total">Total: {{ totalPrice() | currency : "EUR" }}</td>
+        </tr>
+        } @if (cartitems.length == 0) {
+        <tr>
+          <td colspan="4">Your cart is empty.</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
 </div>
