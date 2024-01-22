@@ -148,33 +148,38 @@ section {
   background-image: url(assets/formalM.jpg);
 }
 
+/*filter*/
 .filter__clothes__container {
   display: grid;
   text-align: center;
-  grid-column-gap: 10px;
+  grid-column-gap: 20px;
   padding: 50px 40px 0 40px;
   grid-template-columns: repeat(4, 1fr);
 }
 .filter__container {
   display: grid;
   text-align: center;
+  max-height: 100px;
   grid-template-rows: repeat(1, 2fr);
 }
-
-.filter__container__categories,
-.filter__container__merken {
-  text-align: left;
+.filter__container__categories {
   padding: 20px;
+  text-align: left;
   color: rgb(55, 54, 54);
   border: 1px solid rgb(210, 208, 208);
 }
-.filter__container__categories h1,
-.filter__container__merken h1 {
+.filter__container__categories h1 {
   padding-bottom: 10px;
 }
-.filter__container__categories p,
-.filter__container__merken p {
+.filter__container__categories p {
+  font-size: 20px;
+  padding-top: 5px;
   padding-bottom: 5px;
+  transition: transform 0.25s ease-out;
+}
+.filter__container__categories p:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 /*kleren*/
@@ -192,38 +197,31 @@ section {
   border: 1px solid rgb(210, 208, 208);
 }
 
-.clothes__container__items {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 50px;
-}
-
 .clothes__items {
+  gap: 2%;
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  margin-top: 40px;
 }
 
 .clothes_box {
-  width: 200px;
+  width: 23%;
+  border-radius: 8px;
+  margin-bottom: 40px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
 }
 
 .product_box {
-  display: flex;
-  flex-direction: column;
   cursor: pointer;
+  flex-direction: column;
   transition: 0.3s ease-in-out;
 }
 
 .product_box:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
-  border: 1px solid red;
   border-radius: 12px;
+  border: 1px solid red;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
 
 .product_image {
