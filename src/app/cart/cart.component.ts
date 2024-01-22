@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class CartComponent implements OnInit {
   cartItem: any;
+  cartEmpty: boolean | undefined;
   removeCartItem(_t5: any) {
     throw new Error('Method not implemented.');
   }
@@ -25,5 +26,7 @@ export class CartComponent implements OnInit {
       .then((data) => {
         this.cartItem = data;
       });
+    // Toon de "Your cart is empty" tekst als de cart leeg is.
+    this.cartEmpty = this.cartItem.length === 0;
   }
 }
