@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { CartService } from '../../cart/cart.service'; 
 
-//product opstelling database
 interface Product {
   id: number;
   name: string;
@@ -18,37 +18,36 @@ interface Product {
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './heren.component.html',
-  styleUrl: './heren.component.css',
+  styleUrls: ['./heren.component.css'],
 })
 export class HerenComponent implements OnInit {
-  productsHeren: any;
-  filteredProducts: any;
+  productsHeren: Product[] = [];
+  filteredProducts: Product[] = [];
   url = 'http://localhost:3000/api/productsh';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private cartService: CartService) {}
 
-  //oproepen van alle producten bij de categorie heren + filter
   ngOnInit(): void {
     fetch(this.url)
       .then((response) => response.json())
-      .then((data) => {
+      .then((data: Product[]) => {
         this.productsHeren = data;
         this.filteredProducts = data;
       });
   }
 
-  //categorie filter
   filterByCategory(categoryId: number): void {
-    console.log('Selected Category ID:', categoryId);
     if (categoryId === 0) {
-      //Als de categorie 0 of 'show all' is => toon alle producten
-      console.log('all products');
       this.filteredProducts = this.productsHeren;
     } else {
-      // Filter op de geselecteerde categorie
       this.filteredProducts = this.productsHeren.filter(
         (product: Product) => product.category_id == categoryId
       );
     }
+  }
+
+  // Function to handle the "Add to Cart" button click
+  addToCart(product: Product): void {
+    this.cartService.add(product, 'heren');
   }
 }

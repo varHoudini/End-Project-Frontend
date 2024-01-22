@@ -1,32 +1,46 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { CartService } from './cart.service';
+import { product } from './cart.model';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './cart.component.html',
-  styleUrl: './cart.component.css',
+  styleUrls: ['./cart.component.css'], 
 })
 export class CartComponent implements OnInit {
-  cartItem: any;
-  cartEmpty: boolean | undefined;
-  removeCartItem(_t5: any) {
-    throw new Error('Method not implemented.');
-  }
-  totalPrice: any;
+  // Assuming you have separate arrays for men, women, and kids
+  menCartItems: product[] = [];
+  womenCartItems: product[] = [];
+  kidsCartItems: product[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
-    fetch('http://localhost:3000/api/cart')
-      .then((response) => response.json())
-      .then((data) => {
-        this.cartItem = data;
-      });
-    // Toon de "Your cart is empty" tekst als de cart leeg is.
-    this.cartEmpty = this.cartItem.length === 0;
+    // Load initial cart items
+    this.menCartItems = this.cartService.getProducts('Heren');
+    this.womenCartItems = this.cartService.getProducts('Dames');
+    this.kidsCartItems = this.cartService.getProducts('Kids');
+  }
+
+  // Function to handle the "Add to Cart" button click for men's productss
+  addToCartMen(products: product) {
+    this.cartService.add(products, 'Heren');
+    this.menCartItems = this.cartService.getProducts('Heren');
+  }
+
+  // Function to handle the "Add to Cart" button click for women's productss
+  addToCartWomen(products: product) {
+    this.cartService.add(products, 'Dames');
+    this.womenCartItems = this.cartService.getProducts('Dames');
+  }
+
+  // Function to handle the "Add to Cart" button click for kids' productss
+  addToCartKids(products: product) {
+    this.cartService.add(products, 'Kids');
+    this.kidsCartItems = this.cartService.getProducts('Kids');
   }
 }
