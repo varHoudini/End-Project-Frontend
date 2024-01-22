@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
+////product opstelling database
 interface Product {
   id: number;
   name: string;
   image: string;
   brand: string;
   price: number;
-  product_id: number;
+  category_id: number;
 }
 
 @Component({
@@ -28,6 +29,7 @@ export class DamesComponent implements OnInit {
 
   constructor(private http: HttpClient) {}
 
+  //oproepen van alle producten bij de categorie dames + filter
   ngOnInit(): void {
     fetch(this.url)
       .then((response) => response.json())
@@ -37,14 +39,23 @@ export class DamesComponent implements OnInit {
       });
   }
 
+  //prijzen filter
+  //work in progress - zoek een betere manier
+  sortProducts(): void {
+    const sortOption = document.getElementById('optie') as HTMLSelectElement;
+  }
+
+  //categorie filter
   filterByCategory(categoryId: number): void {
+    console.log('Selected Category ID:', categoryId);
     if (categoryId === 0) {
       //Als de categorie 0 of 'show all' is => toon alle producten
+      console.log('all products');
       this.filteredProducts = this.productsDames;
     } else {
       // Filter op de geselecteerde categorie
       this.filteredProducts = this.productsDames.filter(
-        (product: Product) => product.product_id === categoryId
+        (product: Product) => product.category_id == categoryId
       );
     }
   }
