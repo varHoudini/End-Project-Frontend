@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -12,4 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'endproject';
+  favicon: string;
+  constructor() {
+    this.favicon = 'assets/favicon.ico';
+  }
 }
