@@ -24,6 +24,15 @@ export class CartComponent implements OnInit {
     this.cartitems = JSON.parse(localStorage.getItem('cartItems') || '[]');
    }
 
+  //  function to remove items in cart
+  removeItem(product: product) {
+    const index = this.cartitems.indexOf(product);
+    if (index > -1) {
+      this.cartitems.splice(index, 1);
+      localStorage.setItem('cartItems', JSON.stringify(this.cartitems));
+    }
+  }
+
   // Function to handle the "Add to Cart" button click for men's productss
   addToCartMen(products: product) {
     this.cartService.add(products, 'Heren');

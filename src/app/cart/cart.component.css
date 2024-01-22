@@ -1,90 +1,51 @@
-.cart {
-  padding: 150px;
-  border-radius: 10px;
-  overflow: hidden;
+.cart-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.cart-items {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.cart-items li {
-  display: flex;
-  margin-bottom: 10px;
-}
-
-.cart-items li img {
-  margin-right: 10px;
-  width: 60px;
-  height: 60px;
-}
-
-.cart-items li p {
-  color: #000000;
-  font-weight: bold;
-  position: relative;
-  left: 25%;
-  top: 30px;
-}
-
-.cart-items li span {
-  color: #000000;
-  font-weight: bold;
-  position: relative;
-  left: 40%;
-  top: 50px;
-}
-
-.cart-items li button {
-  padding: 5px 50px;
-  border: none;
-  background-color: transparent;
-  color: red;
-  cursor: pointer;
-  width: 2px;
-  height: 50px;
-  padding: 10px;
-  border-width: 1px;
-  position: relative;
-  left: 65%;
-  top: 33px;
-}
-
-.cart-total {
-  font-size: 18px;
-  margin-top: 20px;
-  margin-top: -10px;
-  position: absolute;
+.cart-item {
   text-align: center;
-  padding: 10px 20px;
-  position: relative;
-  left: 40%;
-  margin-top: 10%;
+  margin-top: 10vh;
+  min-height: 70vh;
 }
 
-.checkout-button {
-  background-color: #ff0000;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.item-row {
+  background-color: #f9f9f9;
+}
+
+.product-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.remove-button {
+  background-color: #ff5757;
   color: #fff;
-  padding: 10px 20px;
+  padding: 8px 16px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  position: relative;
-  left: 45%;
-  bottom: -100px;
   transition: background-color 0.3s ease;
 }
-.checkout-button:hover {
-  background-color: #333;
-}
 
-/* empty cart */
-.cart-empty {
-  display: none;
-}
-
-.cart-empty *ngIf p {
-  display: block;
+.remove-button:hover {
+  background-color: #d63232;
 }
