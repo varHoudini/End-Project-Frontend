@@ -1,17 +1,10 @@
+// heren.component.ts
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../cart/cart.service'; 
-
-interface Product {
-  id: number;
-  name: string;
-  image: string;
-  brand: string;
-  price: number;
-  category_id: number;
-}
+import { product } from '../../cart/cart.model';
 
 @Component({
   selector: 'app-heren',
@@ -21,19 +14,26 @@ interface Product {
   styleUrls: ['./heren.component.css'],
 })
 export class HerenComponent implements OnInit {
-  productsHeren: Product[] = [];
-  filteredProducts: Product[] = [];
+  productsHeren: product[] = [];
+  filteredProducts: product[] = [];
   url = 'http://localhost:3000/api/productsh';
 
   constructor(private http: HttpClient, private cartService: CartService) {}
 
-  ngOnInit(): void {
-    fetch(this.url)
-      .then((response) => response.json())
-      .then((data: Product[]) => {
-        this.productsHeren = data;
-        this.filteredProducts = data;
-      });
+  async ngOnInit(): Promise<void> {
+    await this.fetchProducts();
+  }
+
+  async fetchProducts(): Promise<void> {
+    try {
+      const data: product[] | undefined = await this.http.get<product[]>(this.url).toPromise();
+      // Initialize with an empty array if data is undefined
+      this.productsHeren = data || [];
+      this.filteredProducts = this.productsHeren;
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      // Handle the error (e.g., display a message to the user)
+    }
   }
 
   filterByCategory(categoryId: number): void {
@@ -41,13 +41,13 @@ export class HerenComponent implements OnInit {
       this.filteredProducts = this.productsHeren;
     } else {
       this.filteredProducts = this.productsHeren.filter(
-        (product: Product) => product.category_id == categoryId
+        (product: product) => product.category_id == categoryId
       );
     }
   }
 
   // Function to handle the "Add to Cart" button click
-  addToCart(product: Product): void {
+  addToCart(product: product): void {
     this.cartService.add(product, 'heren');
   }
 }
