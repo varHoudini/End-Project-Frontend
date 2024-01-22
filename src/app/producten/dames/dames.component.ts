@@ -2,16 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
-//product opstelling database - product
-interface Product {
-  id: number;
-  name: string;
-  image: string;
-  brand: string;
-  price: number;
-  category_id: number;
-}
+import { CartService } from '../../cart/cart.service';
+import { product } from '../../cart/cart.model';
 
 @Component({
   selector: 'app-dames',
@@ -21,14 +13,13 @@ interface Product {
   styleUrl: './dames.component.css',
 })
 
-//oproepen van de producten
-//api url gebruiken voor de filter categorie -> word in progress
+//oproepen van de producten & filter
 export class DamesComponent implements OnInit {
   productsDames: any;
   filteredProducts: any;
   url = 'http://localhost:3000/api/productsd';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private cartService: CartService) {}
 
   //oproepen van alle producten bij de categorie dames + filter
   ngOnInit(): void {
@@ -41,9 +32,21 @@ export class DamesComponent implements OnInit {
   }
 
   //prijzen filter
-  //work in progress - zoek een betere manier
   sortProducts(): void {
     const sortOption = document.getElementById('optie') as HTMLSelectElement;
+    const sortBy = sortOption.value;
+
+    if (sortBy === 'high') {
+      // Sorteert 'filteredProducts' => producten zijn prijs in descending orde (groot naar klein)
+      this.filteredProducts = this.filteredProducts.sort(
+        (a: product, b: product) => b.price - a.price
+      );
+    } else if (sortBy === 'low') {
+      // Sorteert 'filteredProducts' => producten zijn prijs in ascending orde (klein naar groot)
+      this.filteredProducts = this.filteredProducts.sort(
+        (a: product, b: product) => a.price - b.price
+      );
+    }
   }
 
   //categorie filter
@@ -56,8 +59,19 @@ export class DamesComponent implements OnInit {
     } else {
       // Filter op de geselecteerde categorie
       this.filteredProducts = this.productsDames.filter(
-        (product: Product) => product.category_id == categoryId
+        (product: product) => product.category_id == categoryId
       );
     }
+  }
+
+  //product toevoegen aan winkelwagen
+  addToCart(product: product): void {
+    console.log('Product added to cart:', product);
+
+    //krijg de product van localstorage
+    const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+    cartItems.push(product);
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    console.log('Cart items:', cartItems);
   }
 }

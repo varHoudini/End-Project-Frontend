@@ -76,8 +76,8 @@
 
   <div class="clothes_container">
     <div class="clothes__container__filter">
-      <label for="optie">Sorteer op:</label>
-      <select name="optie" id="optie">
+      <label for="optie">Sort by</label>
+      <select name="optie" id="optie" (change)="sortProducts()">
         <option value="high">High to low</option>
         <option value="low">Low to high</option>
         <!-- <option value="collectie">Nieuwe collectie</option>

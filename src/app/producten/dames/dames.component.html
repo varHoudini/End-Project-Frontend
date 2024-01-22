@@ -77,7 +77,7 @@
   <div class="clothes_container">
     <div class="clothes__container__filter">
       <label for="optie">Sort by:</label>
-      <select name="optie" id="optie">
+      <select name="optie" id="optie" (change)="sortProducts()">
         <option value="high">High to low</option>
         <option value="low">Low to high</option>
         <!-- <option value="collectie">Nieuwe collectie</option>
@@ -100,7 +100,9 @@
             <p class="product_price">
               {{ product.price | currency : "EUR" }}
             </p>
-            <button class="add_to_cart_button">Add To Cart</button>
+            <button class="add_to_cart_button" (click)="addToCart(product)">
+              Add To Cart
+            </button>
           </div>
         </div>
       </div>
