@@ -90,7 +90,7 @@ export class DamesComponent implements OnInit {
 
       //krijg de product van localstorage
       const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
-      cartItems.push({ product, size });
+      cartItems.push({ ...product, size: size, quantity: 1 });
       localStorage.setItem('cartItems', JSON.stringify(cartItems));
 
       console.log('Cart items:', cartItems);
