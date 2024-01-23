@@ -6,4 +6,5 @@ export interface product {
     brand: string
     price: number
     category_id: number
+    size: string
 }
