@@ -113,6 +113,13 @@ section {
   text-decoration: none;
   border: 2px solid white;
   background-color: black;
+  transition: .5s ease-in-out;
+}
+
+.campaign__button:hover {
+  color: black;
+  background-color: white;
+  border: 2px solid black;
 }
 
 /*info over MADfashion*/
