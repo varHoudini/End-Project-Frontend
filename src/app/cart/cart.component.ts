@@ -7,9 +7,9 @@ import { product } from './cart.model';
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [FormsModule, CommonModule,],
+  imports: [FormsModule, CommonModule],
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css'], 
+  styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
   // Assuming you have separate arrays for men, women, and kids
@@ -22,7 +22,7 @@ export class CartComponent implements OnInit {
   cartitems: product[] = [];
   ngOnInit(): void {
     this.cartitems = JSON.parse(localStorage.getItem('cartItems') || '[]');
-   }
+  }
 
   //  function to remove items in cart
   removeItem(product: product) {
@@ -33,7 +33,7 @@ export class CartComponent implements OnInit {
     }
   }
 
-//  function for total price
+  //  function for total price
   totalPrice() {
     return this.cartitems.reduce((total, item) => total + item.price, 0);
   }
@@ -41,7 +41,7 @@ export class CartComponent implements OnInit {
   // Function to handle the "Add to Cart" button click for men's productss
   addToCartMen(products: product) {
     this.cartService.add(products, 'Heren');
-   // this.menCartItems = this.cartService.getProducts('Heren');
+    // this.menCartItems = this.cartService.getProducts('Heren');
   }
 
   // Function to handle the "Add to Cart" button click for women's productss

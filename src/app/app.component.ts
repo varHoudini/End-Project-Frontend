@@ -12,9 +12,16 @@ import { BrowserModule } from '@angular/platform-browser';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'endproject';
-  favicon: string;
-  constructor() {
-    this.favicon = 'assets/favicon.ico';
+  title: string = 'endproject';
+  favicon: string = 'assets/favicon.ico';
+
+  cartItems: number = 0;
+  cartItemsArray: any;
+
+  constructor() {}
+
+  ngOnInit(): void {
+    this.cartItemsArray = JSON.parse(localStorage.getItem('cartItems') || '[]');
+    this.cartItems = this.cartItemsArray.length;
   }
 }
