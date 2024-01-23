@@ -7,7 +7,7 @@
         <thead>
           <tr>
             <th>Product Image</th>
-            <th>Product Name</th>
+            <th>Product</th>
             <th>Price</th>
             <th>Action</th>
           </tr>
@@ -22,16 +22,26 @@
                 class="product-image"
               />
             </td>
-            <td>{{ item.name }}</td>
+            <td>{{ item.size }} || {{ item.name }}</td>
             <td>{{ item.price | currency : "EUR" }}</td>
             <td>
-              <button class="delete-btn" (click)="removeItem(item)"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
-              </svg></button>
+              <button class="delete-btn" (click)="removeItem(item)">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  fill="currentColor"
+                  class="bi bi-x"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"
+                  />
+                </svg>
+              </button>
             </td>
           </tr>
-          } 
-          @if (cartitems.length == 0) {
+          } @if (cartitems.length == 0) {
           <tr>
             <td colspan="4">Your cart is empty.</td>
           </tr>
@@ -56,10 +66,9 @@
         <tr>
           <td>{{ item.name }}</td>
           <td>{{ item.price | currency : "EUR" }}</td>
-          <td><input type="number" min="1" id="quantity"></td>
+          <td><input type="number" min="1" id="quantity" /></td>
         </tr>
-        }
-        @if (cartitems.length == 0) {
+        } @if (cartitems.length == 0) {
         <tr>
           <td colspan="3">No items in cart</td>
         </tr>
@@ -75,4 +84,3 @@
     </table>
   </div>
 </div>
-

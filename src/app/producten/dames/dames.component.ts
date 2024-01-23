@@ -27,8 +27,27 @@ export class DamesComponent implements OnInit {
       .then((response) => response.json())
       .then((data) => {
         this.productsDames = data;
-        this.filteredProducts = data;
+        this.filteredProducts = this.productsDames.map((product: any) => ({
+          ...product,
+          sizes: this.getSizeOptions(product.category_id),
+          showSizes: false,
+          selectedSize: '', // Toegevoegd om de geselecteerde maat bij te houden
+        }));
       });
+  }
+
+  //verschillende maten afhangend van category_id
+  getSizeOptions(categoryId: number): string[] {
+    if (categoryId === 1) {
+      return ['38', '39', '40', '41', '42', '43'];
+    } else {
+      return ['XS', 'S', 'M', 'L', 'XL'];
+    }
+  }
+
+  //toggle voor tonen van maten
+  toggleSizeDisplay(product: any, show: boolean): void {
+    product.showSizes = show;
   }
 
   //prijzen filter
@@ -65,13 +84,18 @@ export class DamesComponent implements OnInit {
   }
 
   //product toevoegen aan winkelwagen
-  addToCart(product: product): void {
-    console.log('Product added to cart:', product);
+  addToCart(product: product, size: string): void {
+    if (size) {
+      console.log('Product added to cart:', product, 'Size:', size);
 
-    //krijg de product van localstorage
-    const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
-    cartItems.push(product);
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
-    console.log('Cart items:', cartItems);
+      //krijg de product van localstorage
+      const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+      cartItems.push({ product, size });
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+      console.log('Cart items:', cartItems);
+    } else {
+      console.error('Please select a size before adding to cart.');
+    }
   }
 }

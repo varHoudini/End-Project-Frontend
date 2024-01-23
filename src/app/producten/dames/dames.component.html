@@ -89,9 +89,26 @@
       <!-- {{ productsDames | json }} -->
       @if (filteredProducts) { @for (product of filteredProducts; track
       product.id) {
-      <div class="clothes_box">
+      <div
+        class="clothes_box"
+        (mouseover)="toggleSizeDisplay(product, true)"
+        (mouseout)="toggleSizeDisplay(product, false)"
+      >
         <div class="product_box">
+          <!-- product image - hover functionaliteit -->
           <img src="{{ product.image }}" alt="" class="product_image" />
+
+          <!-- maten - hover functionaliteit -->
+          <div class="product_sizes">
+            <button
+              *ngFor="let size of product.sizes"
+              (click)="addToCart(product, size)"
+            >
+              {{ size }}
+            </button>
+          </div>
+
+          <!-- producten info -->
           <div class="product_info">
             <p class="product_brand">{{ product.brand }}</p>
             <h4 class="product_name">{{ product.name }}</h4>
@@ -100,11 +117,6 @@
             <p class="product_price">
               {{ product.price | currency : "EUR" }}
             </p>
-            <button class="add_to_cart_button" (click)="addToCart(product)">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
-              </svg>
-            </button>
           </div>
         </div>
       </div>
