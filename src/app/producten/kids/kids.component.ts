@@ -2,18 +2,8 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
-
-//product opstelling database - product
-//dit moet weg wanneer de CART wordt toegevoegd - bekijk code van dames & heren
-interface product {
-  id: number;
-  name: string;
-  image: string;
-  brand: string;
-  price: number;
-  category_id: number;
-}
+import { CartService } from '../../cart/cart.service';
+import { product } from '../../cart/cart.model';
 
 @Component({
   selector: 'app-kids',
@@ -32,15 +22,15 @@ export class KidsComponent implements OnInit {
 
   constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
 
- //oproepen van alle producten bij de categorie kids + filter
- ngOnInit(): void {
-  fetch(this.url)
-    .then((response) => response.json())
-    .then((data) => {
-      this.productsKids = data;
-      this.filteredProducts = data;
-    });
-}
+  //oproepen van alle producten bij de categorie kids + filter
+  ngOnInit(): void {
+    fetch(this.url)
+      .then((response) => response.json())
+      .then((data) => {
+        this.productsKids = data;
+        this.filteredProducts = data;
+      });
+  }
 
   //prijzen filter
   sortProducts(): void {
@@ -60,20 +50,20 @@ export class KidsComponent implements OnInit {
     }
   }
 
- //categorie filter
- filterByCategory(categoryId: number): void {
-  console.log('Selected Category ID:', categoryId);
-  if (categoryId === 0) {
-    //Als de categorie 0 of 'show all' is => toon alle producten
-    console.log('all products');
-    this.filteredProducts = this.productsKids;
-  } else {
-    // Filter op de geselecteerde categorie
-    this.filteredProducts = this.productsKids.filter(
-      (product: product) => product.category_id == categoryId
-    );
+  //categorie filter
+  filterByCategory(categoryId: number): void {
+    console.log('Selected Category ID:', categoryId);
+    if (categoryId === 0) {
+      //Als de categorie 0 of 'show all' is => toon alle producten
+      console.log('all products');
+      this.filteredProducts = this.productsKids;
+    } else {
+      // Filter op de geselecteerde categorie
+      this.filteredProducts = this.productsKids.filter(
+        (product: product) => product.category_id == categoryId
+      );
+    }
   }
-}
 
   //product toevoegen aan winkelwagen
   addToCart(product: product): void {
