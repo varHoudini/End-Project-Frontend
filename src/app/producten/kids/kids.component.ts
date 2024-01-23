@@ -28,8 +28,30 @@ export class KidsComponent implements OnInit {
       .then((response) => response.json())
       .then((data) => {
         this.productsKids = data;
-        this.filteredProducts = data;
+        this.filteredProducts = this.productsKids.map((product: any) => ({
+          ...product,
+          sizes: this.getSizeOptions(product.category_id),
+          showSizes: false,
+          selectedSize: '', // Toegevoegd om de geselecteerde maat bij te houden
+        }));
       });
+  }
+
+  //verschillende maten afhangend van category_id
+  getSizeOptions(categoryId: number): string[] {
+    if (categoryId === 1) {
+      return ['38', '39', '40', '41', '42', '43'];
+    }
+    if (categoryId === 5) {
+      return ['one size'];
+    } else {
+      return ['XS', 'S', 'M', 'L', 'XL'];
+    }
+  }
+
+  //toggle voor tonen van maten
+  toggleSizeDisplay(product: any, show: boolean): void {
+    product.showSizes = show;
   }
 
   //prijzen filter
@@ -50,7 +72,7 @@ export class KidsComponent implements OnInit {
     }
   }
 
-  //categorie filter
+  //categorie filter & 'size' knoppen
   filterByCategory(categoryId: number): void {
     console.log('Selected Category ID:', categoryId);
     if (categoryId === 0) {
@@ -62,17 +84,26 @@ export class KidsComponent implements OnInit {
       this.filteredProducts = this.productsKids.filter(
         (product: product) => product.category_id == categoryId
       );
+      //zodat het toont bij de main pagina en bij de filter keuzes
+      this.filteredProducts.forEach((product: any) => {
+        product.showSizes = true;
+      });
     }
   }
 
   //product toevoegen aan winkelwagen
-  addToCart(product: product): void {
-    console.log('Product added to cart:', product);
+  addToCart(product: product, size: string): void {
+    if (size) {
+      console.log('Product added to cart:', product, 'Size:', size);
 
-    //krijg de product van localstorage
-    const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
-    cartItems.push(product);
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
-    console.log('Cart items:', cartItems);
+      //krijg de product van localstorage
+      const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+      cartItems.push({ ...product, size: size, quantity: 1 });
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+      console.log('Cart items:', cartItems);
+    } else {
+      console.error('Please select a size before adding to cart.');
+    }
   }
 }

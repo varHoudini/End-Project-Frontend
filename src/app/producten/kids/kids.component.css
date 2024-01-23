@@ -137,6 +137,7 @@ section {
   background-image: url(assets/formalK.jpg);
 }
 
+/*filter*/
 .filter__clothes__container {
   display: grid;
   text-align: center;
@@ -156,13 +157,12 @@ section {
   text-align: left;
   color: rgb(55, 54, 54);
   border: 2px solid rgb(0, 0, 0);
-  cursor: pointer;  
+  cursor: pointer;
 }
 
 .filter__container__categories h1 {
   padding-bottom: 10px;
 }
-
 .filter__container__categories p {
   font-size: 20px;
   padding-top: 5px;
@@ -170,7 +170,6 @@ section {
   position: relative;
   overflow: hidden;
 }
-
 .filter__container__categories p::before {
   content: "";
   position: absolute;
@@ -183,7 +182,6 @@ section {
   transform: scaleX(0);
   transition: transform 0.25s ease-out;
 }
-
 .filter__container__categories p:hover::before {
   transform-origin: bottom left;
   transform: scaleX(1);
@@ -214,7 +212,7 @@ section {
   border-radius: 8px;
   margin-bottom: 40px;
   background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
 }
 
 .product_box {
@@ -224,9 +222,8 @@ section {
   border-radius: 10px;
   border: 2px solid rgb(0, 0, 0);
 }
-
 .product_box:hover {
-  box-shadow: 0 0 10px rgba(213, 7, 7, 0.6);
+  box-shadow: 0 0 10px rgba(213, 7, 7, 0.776);
 }
 
 .product_image {
@@ -263,13 +260,39 @@ section {
   font-weight: bold;
 }
 
+/*maten knoppen*/
+.product_sizes {
+  display: none;
+}
+.product_sizes.show-sizes {
+  display: block;
+  flex-wrap: wrap;
+  margin-top: -10px;
+  /*margin-top: -70px; -over de afbeelding heen 
+  position: relative;*/
+  align-items: center; /* Om de knoppen verticaal uit te lijnen */
+}
+.product_sizes button {
+  width: 33.33%;
+  padding: 5%;
+  color: black;
+  cursor: pointer;
+  border: 1px solid black;
+  background-color: white;
+}
+
+.product_sizes button:hover {
+  color: white;
+  background-color: rgb(61, 61, 61); /* Achtergrondkleur bij zweven */
+}
+
 .add_to_cart_button {
   color: #000000;
   cursor: pointer;
   padding: 8px 16px;
   background-color: transparent;
   border: 2px solid #000000;
-  transition: .5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 .add_to_cart_button:hover {
   background-color: #000000;
