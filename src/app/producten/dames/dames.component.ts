@@ -40,6 +40,9 @@ export class DamesComponent implements OnInit {
   getSizeOptions(categoryId: number): string[] {
     if (categoryId === 1) {
       return ['38', '39', '40', '41', '42', '43'];
+    }
+    if (categoryId === 5) {
+      return ['one size'];
     } else {
       return ['XS', 'S', 'M', 'L', 'XL'];
     }
@@ -68,7 +71,7 @@ export class DamesComponent implements OnInit {
     }
   }
 
-  //categorie filter
+  //categorie filter & 'size' knoppen
   filterByCategory(categoryId: number): void {
     console.log('Selected Category ID:', categoryId);
     if (categoryId === 0) {
@@ -80,6 +83,10 @@ export class DamesComponent implements OnInit {
       this.filteredProducts = this.productsDames.filter(
         (product: product) => product.category_id == categoryId
       );
+      //zodat het toont bij de main pagina en bij de filter keuzes
+      this.filteredProducts.forEach((product: any) => {
+        product.showSizes = true;
+      });
     }
   }
 
