@@ -226,7 +226,7 @@ section {
 }
 
 .product_box:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 10px rgba(213, 7, 7, 0.6);
 }
 
 .product_image {
