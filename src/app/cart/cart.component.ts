@@ -55,4 +55,8 @@ export class CartComponent implements OnInit {
     this.cartService.add(products, 'Kids');
     //this.kidsCartItems = this.cartService.getProducts('Kids');
   }
+
+  quantityTotal() {
+    return this.cartitems.reduce((total, item) => total + item.quantity, 0);
+  }
 }

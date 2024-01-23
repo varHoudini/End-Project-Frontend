@@ -1,4 +1,5 @@
 export interface product {
+    quantity: number
     id: number
     name: string
     image: string
