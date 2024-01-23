@@ -59,6 +59,11 @@
           <td><input type="number" min="1" id="quantity"></td>
         </tr>
         }
+        @if (cartitems.length == 0) {
+        <tr>
+          <td colspan="3">No items in cart</td>
+        </tr>
+        }
       </tbody>
       <tfoot>
         <tr>
