@@ -73,10 +73,10 @@ export class DamesComponent implements OnInit {
 
   //categorie filter & 'size' knoppen
   filterByCategory(categoryId: number): void {
-    console.log('Selected Category ID:', categoryId);
+    //console.log('Selected Category ID:', categoryId);
     if (categoryId === 0) {
       //Als de categorie 0 of 'show all' is => toon alle producten
-      console.log('all products');
+      //console.log('all products');
       this.filteredProducts = this.productsDames;
     } else {
       // Filter op de geselecteerde categorie
@@ -93,14 +93,14 @@ export class DamesComponent implements OnInit {
   //product toevoegen aan winkelwagen
   addToCart(product: product, size: string): void {
     if (size) {
-      console.log('Product added to cart:', product, 'Size:', size);
+      //console.log('Product added to cart:', product, 'Size:', size);
 
       //krijg de product van localstorage
       const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
-      cartItems.push({ ...product, size: size, quantity: 1 });
+      cartItems.push({ ...product, size: size });
       localStorage.setItem('cartItems', JSON.stringify(cartItems));
 
-      console.log('Cart items:', cartItems);
+      //console.log('Cart items:', cartItems);
     } else {
       console.error('Please select a size before adding to cart.');
     }

@@ -49,6 +49,9 @@ export class HerenComponent implements OnInit {
   getSizeOptions(categoryId: number): string[] {
     if (categoryId === 1) {
       return ['38', '39', '40', '41', '42', '43'];
+    }
+    if (categoryId === 5) {
+      return ['one size'];
     } else {
       return ['XS', 'S', 'M', 'L', 'XL'];
     }
@@ -87,6 +90,10 @@ export class HerenComponent implements OnInit {
       this.filteredProducts = this.productsHeren.filter(
         (product: product) => product.category_id == categoryId
       );
+      //zodat het toont bij de main pagina en bij de filter keuzes
+      this.filteredProducts.forEach((product: any) => {
+        product.showSizes = true;
+      });
     }
   }
 
@@ -97,7 +104,7 @@ export class HerenComponent implements OnInit {
 
       //krijg de product van localstorage
       const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
-      cartItems.push({ ...product, size: size, quantity: 1 });
+      cartItems.push({ ...product, size: size });
       localStorage.setItem('cartItems', JSON.stringify(cartItems));
 
       ///console.log('Cart items:', cartItems);

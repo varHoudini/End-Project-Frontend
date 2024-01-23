@@ -88,17 +88,20 @@
       <!-- {{ productsHeren | json }} -->
       @if (filteredProducts) { @for (product of filteredProducts; track
       product.id) {
-      <!-- product image - hover functionaliteit -->
       <div
         class="clothes_box"
         (mouseover)="toggleSizeDisplay(product, true)"
         (mouseout)="toggleSizeDisplay(product, false)"
       >
         <div class="product_box">
+          <!-- product image - hover functionaliteit -->
           <img src="{{ product.image }}" alt="" class="product_image" />
 
           <!-- maten - hover functionaliteit -->
-          <div class="product_sizes">
+          <div
+            class="product_sizes"
+            [ngClass]="{ 'show-sizes': product.showSizes }"
+          >
             <button
               *ngFor="let size of product.sizes"
               (click)="addToCart(product, size)"
