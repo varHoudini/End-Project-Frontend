@@ -212,7 +212,7 @@ section {
   border-radius: 8px;
   margin-bottom: 40px;
   background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
 }
 
 .product_box {
@@ -262,16 +262,21 @@ section {
 
 /*maten knoppen*/
 .product_sizes {
-  display: flex;
+  display: none;
+}
+.product_sizes.show-sizes {
+  display: block;
   flex-wrap: wrap;
-  width: fit-content;
+  margin-top: -10px;
+  /*margin-top: -70px; -over de afbeelding heen 
+  position: relative;*/
   align-items: center; /* Om de knoppen verticaal uit te lijnen */
-  justify-content: space-around; /* Om de knoppen evenredig te verdelen */
 }
 .product_sizes button {
+  width: 33.33%;
+  padding: 5%;
   color: black;
   cursor: pointer;
-  padding: 10px 20px;
   border: 1px solid black;
   background-color: white;
 }

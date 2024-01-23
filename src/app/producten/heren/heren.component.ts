@@ -33,11 +33,30 @@ export class HerenComponent implements OnInit {
         .toPromise();
       // Initialize with an empty array if data is undefined
       this.productsHeren = data || [];
-      this.filteredProducts = this.productsHeren;
+      this.filteredProducts = this.productsHeren.map((product: any) => ({
+        ...product,
+        sizes: this.getSizeOptions(product.category_id),
+        showSizes: false,
+        selectedSize: '', // Toegevoegd om de geselecteerde maat bij te houden
+      }));
     } catch (error) {
       console.error('Error fetching products:', error);
       // Handle the error (e.g., display a message to the user)
     }
+  }
+
+  //verschillende maten afhangend van category_id
+  getSizeOptions(categoryId: number): string[] {
+    if (categoryId === 1) {
+      return ['38', '39', '40', '41', '42', '43'];
+    } else {
+      return ['XS', 'S', 'M', 'L', 'XL'];
+    }
+  }
+
+  //toggle voor tonen van maten
+  toggleSizeDisplay(product: any, show: boolean): void {
+    product.showSizes = show;
   }
 
   //prijzen filter
@@ -72,13 +91,18 @@ export class HerenComponent implements OnInit {
   }
 
   //product toevoegen aan winkelwagen
-  addToCart(product: product): void {
-    console.log('Product added to cart:', product);
+  addToCart(product: product, size: string): void {
+    if (size) {
+      //console.log('Product added to cart:', product);
 
-    //krijg de product van localstorage
-    const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
-    cartItems.push(product);
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
-    console.log('Cart items:', cartItems);
+      //krijg de product van localstorage
+      const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+      cartItems.push({ ...product, size: size, quantity: 1 });
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+      ///console.log('Cart items:', cartItems);
+    } else {
+      console.error('Please select a size before adding to cart.');
+    }
   }
 }
