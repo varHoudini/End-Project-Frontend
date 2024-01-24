@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { observeOn } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -17,9 +18,14 @@ export class AppComponent {
 
   cartItems: number = 0;
   cartItemsArray: any;
+  cartItemssupscribe: any;
 
   constructor() {}
-
+  ngOninit(): void {
+    if (this.cartItemssupscribe) {
+      this.cartItemssupscribe.subscribe();
+    }
+  }
   ngOnInit(): void {
     this.cartItemsArray = JSON.parse(localStorage.getItem('cartItems') || '[]');
     this.cartItems = this.cartItemsArray.length;
