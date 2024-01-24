@@ -8,6 +8,7 @@
           <tr>
             <th>Product Image</th>
             <th>Product</th>
+            <th>Size</th>
             <th>Price</th>
             <th>Action</th>
           </tr>
@@ -22,7 +23,8 @@
                 class="product-image"
               />
             </td>
-            <td>{{ item.size }} || {{ item.name }}</td>
+            <td> {{ item.name }}</td>
+            <td>{{ item.size }}</td>
             <td>{{ item.price | currency : "EUR" }}</td>
             <td>
               <button class="delete-btn" (click)="removeItem(item)">
