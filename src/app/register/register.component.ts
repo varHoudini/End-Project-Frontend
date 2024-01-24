@@ -1,39 +1,41 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { UserService } from '../shared/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule],
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrl: './register.component.css',
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
+  password: any;
+  username: any;
+  showPassword: boolean = false;
+  email: any;
 
-  url = "http://localhost:3000/api/usersregister";
-  registrationForm: FormGroup;
+  constructor(
+    private UserService: UserService,
+    private toastr: ToastrService
+  ) {}
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
-    this.registrationForm = this.fb.group({
-      firstname: ['', Validators.required],
-      lastname: ['', Validators.required],
-      username: ['', Validators.required],
-      password: ['', Validators.required],
-      birthday: ['', Validators.required],
-      street: ['', Validators.required],
-      houseNumber: ['', Validators.required],
-      postalcode: ['', Validators.required],
-      city: ['', Validators.required],
-      country: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      phoneNumber: ['', Validators.required],
-    });
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
   }
 
-  ngOnInit(): void {
-      
+  onSubmit() {
+    console.log(this.username);
+    console.log(this.password);
+
+    // acces the service and send username and password
+    this.UserService.register(this.username, this.password, this.email);
+    this.toastr.success('You have registered', 'Yay');
+
+    // clear the fields;
+    this.username = '';
+    this.password = '';
+    this.email = '';
   }
 }
