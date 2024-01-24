@@ -5,12 +5,20 @@ import * as bcrypt from 'bcryptjs';
   providedIn: 'root',
 })
 export class UserService {
-  async register(username: any, password: any, email: any) {
+  async register(lastname: string, firstname: string, username: string, email: string, password: string, birthdate: Date, street: string, number: number, zipcode: number, city: string, phone: number) {
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(password, salt);
     const user = {
       name: username,
       email: email,
+      firstname: firstname,
+      lastname: lastname,
+      birthdate: birthdate,
+      street: street,
+      number: number,
+      zipcode: zipcode,
+      city: city,
+      phone: phone,
       password: hashedPassword,
     };
     const result = await fetch('http://localhost:3000/api/users', {
