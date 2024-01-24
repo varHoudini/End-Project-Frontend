@@ -11,13 +11,14 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './register.component.css',
 })
 export class RegisterComponent {
-  firstname: any;
-  lastname: any;
+  first_name: any;
+  last_name: any;
   birthdate: any;
-  street: any;
-  number: any;
-  zipcode: any;
+  streetname: any;
+  houseNumber: any;
+  postalcode: any;
   city: any;
+  country: any;
   phone: any;
   password: any;
   username: any;
@@ -38,16 +39,29 @@ export class RegisterComponent {
     console.log(this.password);
 
     // acces the service and send username and password
-    this.UserService.register(this.username, this.password, this.firstname, this.lastname, this.birthdate, this.street, this.number, this.zipcode, this.city, this.phone, this.email);
+    this.UserService.register(
+      this.username,
+      this.password,
+      this.first_name,
+      this.last_name,
+      this.birthdate,
+      this.streetname,
+      this.houseNumber,
+      this.postalcode,
+      this.city,
+      this.phone,
+      this.email,
+      this.country
+    );
     this.toastr.success('You have registered', 'Yay');
 
     // clear the fields;
-    this.firstname = '';
-    this.lastname = '';
+    this.first_name = '';
+    this.last_name = '';
     this.birthdate = '';
-    this.street = '';
-    this.number = '';
-    this.zipcode = '';
+    this.streetname = '';
+    this.houseNumber = '';
+    this.postalcode = '';
     this.city = '';
     this.phone = '';
     this.username = '';

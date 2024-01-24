@@ -9,8 +9,8 @@
       <input
         type="text"
         placeholder="firstname"
-        name="firstname"
-        id="firstname"
+        name="first_name"
+        id="first_name"
         required
       />
     </div>
@@ -20,8 +20,8 @@
       <input
         type="text"
         placeholder="lastname"
-        name="lastname"
-        id="lastname"
+        name="last_name"
+        id="last_name"
         required
       />
     </div>
@@ -124,7 +124,12 @@
     </div>
 
     <div class="register">
-      <input type="submit" value="sign up" id="form_button" />
+      <input
+        type="submit"
+        value="signup"
+        (click)="onSubmit()"
+        id="form_button"
+      />
     </div>
   </form>
 </section>
