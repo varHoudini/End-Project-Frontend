@@ -34,12 +34,6 @@ export class DamesComponent implements OnInit {
           showSizes: false,
           selectedSize: '', // Toegevoegd om de geselecteerde maat bij te houden
         }));
-        //om ervoor te zorgen dat het toont bij alle producten - zoals bij het veranderen van de categorie
-        if (this.filteredProducts.length > 0) {
-          this.filteredProducts[0].sizes = this.getSizeOptions(
-            this.filteredProducts[0].category_id
-          );
-        }
       });
   }
 
@@ -85,6 +79,10 @@ export class DamesComponent implements OnInit {
       //Als de categorie 0 of 'show all' is => toon alle producten
       //console.log('all products');
       this.filteredProducts = this.productsDames;
+      this.filteredProducts.forEach((product: any) => {
+        product.sizes = this.getSizeOptions(product.category_id);
+        product.showSizes = false;
+      });
     } else {
       // Filter op de geselecteerde categorie
       this.filteredProducts = this.productsDames.filter(
@@ -92,11 +90,8 @@ export class DamesComponent implements OnInit {
       );
       //zodat het toont bij de main pagina en bij de filter keuzes
       this.filteredProducts.forEach((product: any) => {
-        product.showSizes = true;
-      });
-      this.filteredProducts.forEach((product: any) => {
         product.sizes = this.getSizeOptions(product.category_id);
-        product.showSizes = true;
+        product.showSizes = false;
       });
     }
   }

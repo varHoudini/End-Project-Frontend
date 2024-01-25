@@ -79,6 +79,10 @@ export class KidsComponent implements OnInit {
       //Als de categorie 0 of 'show all' is => toon alle producten
       console.log('all products');
       this.filteredProducts = this.productsKids;
+      this.filteredProducts.forEach((product: any) => {
+        product.sizes = this.getSizeOptions(product.category_id);
+        product.showSizes = false;
+      });
     } else {
       // Filter op de geselecteerde categorie
       this.filteredProducts = this.productsKids.filter(
@@ -86,7 +90,8 @@ export class KidsComponent implements OnInit {
       );
       //zodat het toont bij de main pagina en bij de filter keuzes
       this.filteredProducts.forEach((product: any) => {
-        product.showSizes = true;
+        product.sizes = this.getSizeOptions(product.category_id);
+        product.showSizes = false;
       });
     }
   }

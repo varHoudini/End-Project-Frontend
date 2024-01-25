@@ -47,6 +47,23 @@ export class HerenComponent implements OnInit {
     this.getSizeOptions;
   }
 
+  //verschillende maten afhangend van category_id
+  getSizeOptions(categoryId: number): string[] {
+    if (categoryId === 1) {
+      return ['38', '39', '40', '41', '42', '43'];
+    }
+    if (categoryId === 5) {
+      return ['one size'];
+    } else {
+      return ['XS', 'S', 'M', 'L', 'XL'];
+    }
+  }
+
+  //toggle voor tonen van maten
+  toggleSizeDisplay(product: any, show: boolean): void {
+    product.showSizes = show;
+  }
+
   //prijzen filter
   ngonit(): void {}
   sortProducts(): void {
@@ -71,33 +88,22 @@ export class HerenComponent implements OnInit {
     if (categoryId === 0) {
       //Als de categorie 0 of 'show all' is => toon alle producten
       this.filteredProducts = this.productsHeren;
+      //zodat de 'sizes' tonen bij de 'show all' optie van de filter
+      this.filteredProducts.forEach((product: any) => {
+        product.sizes = this.getSizeOptions(product.category_id);
+        product.showSizes = false;
+      });
     } else {
       // Filter op de geselecteerde categorie
       this.filteredProducts = this.productsHeren.filter(
         (product: product) => product.category_id == categoryId
       );
-      //zodat het toont bij de main pagina en bij de filter keuzes
+      //zodat de 'sizes' tonen bij de x optie van de filter
       this.filteredProducts.forEach((product: any) => {
-        product.showSizes = true;
+        product.sizes = this.getSizeOptions(product.category_id);
+        product.showSizes = false;
       });
     }
-  }
-
-  //verschillende maten afhangend van category_id
-  getSizeOptions(categoryId: number): string[] {
-    if (categoryId === 1) {
-      return ['38', '39', '40', '41', '42', '43'];
-    }
-    if (categoryId === 5) {
-      return ['one size'];
-    } else {
-      return ['XS', 'S', 'M', 'L', 'XL'];
-    }
-  }
-
-  //toggle voor tonen van maten
-  toggleSizeDisplay(product: any, show: boolean): void {
-    product.showSizes = show;
   }
 
   //product toevoegen aan winkelwagen
