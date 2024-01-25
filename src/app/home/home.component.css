@@ -39,22 +39,24 @@ header {
 
 .header__text {
   color: white;
-  padding-top: 100px;
+  padding-top: 200px;
   text-align: center;
   position: relative;
-  background-image: url(assets/header.jpg);
+  background-position-y: 62%;
+  background-image: url(assets/Scherm­afbeelding\ 2024-01-25\ om\ 17.05.10.png);
 }
 
 .header__text h2 {
-  padding-top: 80px;
+  padding-top: 120px;
 }
 .header__text h1 {
+  padding-bottom: 40px;
   font-size: 40px;
   font-weight: 600;
 }
 .header__text p {
-  padding-top: 100px;
-  padding-bottom: 40px;
+  padding-top: 150px;
+  padding-bottom: 20px;
 }
 
 .header__button {
@@ -66,7 +68,7 @@ header {
   width: 33.33%;
   color: white;
   font-size: 20px;
-  font-weight: 800;
+  font-weight: 100;
   pointer-events: auto;
   display: inline-block;
   text-decoration: none;
@@ -113,7 +115,7 @@ section {
   text-decoration: none;
   border: 2px solid white;
   background-color: black;
-  transition: .5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 .campaign__button:hover {
