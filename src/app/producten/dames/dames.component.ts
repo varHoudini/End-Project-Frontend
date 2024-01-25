@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../cart/cart.service';
 import { product } from '../../cart/cart.model';
+import { Product } from '../../admin/product.module';
 
 @Component({
   selector: 'app-dames',
@@ -33,6 +34,12 @@ export class DamesComponent implements OnInit {
           showSizes: false,
           selectedSize: '', // Toegevoegd om de geselecteerde maat bij te houden
         }));
+        //om ervoor te zorgen dat het toont bij alle producten - zoals bij het veranderen van de categorie
+        if (this.filteredProducts.length > 0) {
+          this.filteredProducts[0].sizes = this.getSizeOptions(
+            this.filteredProducts[0].category_id
+          );
+        }
       });
   }
 
@@ -85,6 +92,10 @@ export class DamesComponent implements OnInit {
       );
       //zodat het toont bij de main pagina en bij de filter keuzes
       this.filteredProducts.forEach((product: any) => {
+        product.showSizes = true;
+      });
+      this.filteredProducts.forEach((product: any) => {
+        product.sizes = this.getSizeOptions(product.category_id);
         product.showSizes = true;
       });
     }

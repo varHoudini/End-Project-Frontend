@@ -46,27 +46,8 @@ export class HerenComponent implements OnInit {
     this.filterByCategory;
     this.getSizeOptions;
   }
-  //getsize methode aanroepen voor de filter category
-
-  //verschillende maten afhangend van category_id
-  getSizeOptions(categoryId: number): string[] {
-    if (categoryId === 1) {
-      return ['38', '39', '40', '41', '42', '43'];
-    }
-    if (categoryId === 5) {
-      return ['one size'];
-    } else {
-      return ['XS', 'S', 'M', 'L', 'XL'];
-    }
-  }
-
-  //toggle voor tonen van maten
-  toggleSizeDisplay(product: any, show: boolean): void {
-    product.showSizes = show;
-  }
 
   //prijzen filter
-
   ngonit(): void {}
   sortProducts(): void {
     const sortOption = document.getElementById('optie') as HTMLSelectElement;
@@ -100,6 +81,23 @@ export class HerenComponent implements OnInit {
         product.showSizes = true;
       });
     }
+  }
+
+  //verschillende maten afhangend van category_id
+  getSizeOptions(categoryId: number): string[] {
+    if (categoryId === 1) {
+      return ['38', '39', '40', '41', '42', '43'];
+    }
+    if (categoryId === 5) {
+      return ['one size'];
+    } else {
+      return ['XS', 'S', 'M', 'L', 'XL'];
+    }
+  }
+
+  //toggle voor tonen van maten
+  toggleSizeDisplay(product: any, show: boolean): void {
+    product.showSizes = show;
   }
 
   //product toevoegen aan winkelwagen
