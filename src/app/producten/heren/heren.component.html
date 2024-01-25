@@ -88,10 +88,18 @@
       <!-- {{ productsHeren | json }} -->
       @if (filteredProducts) { @for (product of filteredProducts; track
       product.id) {
+      <!-- 
+        de hover functionalitiet voor de size knoppen te tonen (mouseover) 
+        en om ervoor te zorgen dat ze terug verborden zijn wanneer 
+        de gebruiker niet over het product staat (mouseout).
+        &
+        attr.category-id is voor de 'groene' achtergrond enkel voor de category 9 - collab.
+      -->
       <div
         class="clothes_box"
         (mouseover)="toggleSizeDisplay(product, true)"
         (mouseout)="toggleSizeDisplay(product, false)"
+        [ngClass]="{ 'category-9-style': product.category_id === 9 }"
       >
         <div class="product_box">
           <!-- product image - hover functionaliteit -->
