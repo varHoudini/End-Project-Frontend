@@ -43,7 +43,10 @@ export class HerenComponent implements OnInit {
       console.error('Error fetching products:', error);
       // Handle the error (e.g., display a message to the user)
     }
+    this.filterByCategory;
+    this.getSizeOptions;
   }
+  //getsize methode aanroepen voor de filter category
 
   //verschillende maten afhangend van category_id
   getSizeOptions(categoryId: number): string[] {
@@ -63,6 +66,8 @@ export class HerenComponent implements OnInit {
   }
 
   //prijzen filter
+
+  ngonit(): void {}
   sortProducts(): void {
     const sortOption = document.getElementById('optie') as HTMLSelectElement;
     const sortBy = sortOption.value;
@@ -112,4 +117,7 @@ export class HerenComponent implements OnInit {
       console.error('Please select a size before adding to cart.');
     }
   }
+}
+function ngOnInit() {
+  throw new Error('Function not implemented.');
 }
