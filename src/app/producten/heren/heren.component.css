@@ -251,7 +251,7 @@ section {
   box-shadow: 0 0 10px rgba(213, 7, 7, 0.776);
 }
 /* Stijl specifiek voor categoryId = 9 */
-.category-9-style div:hover {
+.category-9-style div:first-child:hover {
   box-shadow: 0 0 10px rgb(10, 122, 29);
 }
 
