@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../shared/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -24,7 +26,9 @@ export class RegisterComponent {
   showPassword: boolean = false;
   email: any;
 
-  constructor(private UserService: UserService) {}
+  constructor(private UserService: UserService, 
+    private toastr: ToastrService, 
+    private router: Router) {}
 
   togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
@@ -49,6 +53,9 @@ export class RegisterComponent {
       this.username,
       this.password
     );
+
+    this.toastr.success('Your account has been created', 'Success');
+    this.router.navigate(['/login']);
 
     // clear the fields;
     this.first_name = '';
