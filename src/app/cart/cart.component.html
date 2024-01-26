@@ -80,7 +80,7 @@
         <tr>
           <td>Total</td>
           <td>{{ totalPrice() | currency : "EUR" }}</td>
-          <td><button class="checkout-button">Checkout</button></td>
+          <td><button class="checkout-button" (click)="checkOut()">Checkout</button></td>
         </tr>
       </tfoot>
     </table>

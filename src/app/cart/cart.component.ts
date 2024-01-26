@@ -59,4 +59,18 @@ export class CartComponent implements OnInit {
   quantityTotal() {
     return this.cartitems.reduce((total, item) => total + item.quantity, 0);
   }
+
+  // functie om een popup melding te geven en cart leeg te maken en als die leeg is, ook een melding.
+  checkOut() {
+    if (this.cartitems.length === 0) {
+      alert('Your cart is empty!');
+      return;
+    }
+    else {
+      alert('Your order has been placed!');
+      localStorage.removeItem('cartItems');
+      this.cartitems = [];
+      return;
+    }
+  }
 }
