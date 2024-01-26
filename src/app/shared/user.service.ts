@@ -6,24 +6,22 @@ import * as bcrypt from 'bcryptjs';
 })
 export class UserService {
   async register(
-    last_name: string,
     first_name: string,
-    username: string,
-    email: string,
-    password: string,
+    last_name: string,
     birthday: Date,
     streetname: string,
     houseNumber: number,
-    postalcode: any,
+    postalcode: number,
     city: string,
+    country: string,
+    email: string,
     phone: number,
-    country: string
+    username: string,
+    password: string,
   ) {
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(password, salt);
     const user = {
-      username: username,
-      email: email,
       first_name: first_name,
       last_name: last_name,
       birthday: birthday,
@@ -31,8 +29,10 @@ export class UserService {
       houseNumber: houseNumber,
       postalcode: postalcode,
       city: city,
-      phone: phone,
       country: country,
+      email: email,
+      phone: phone,
+      username: username,
       password: hashedPassword,
     };
     console.log(user);
