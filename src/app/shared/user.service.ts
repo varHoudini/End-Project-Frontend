@@ -57,7 +57,7 @@ export class UserService {
   // Returns all users
 
   async getUsers() {
-    return (await fetch('http://localhost:3000/api/users')).json();
+    return (await fetch('http://localhost:3000/api/userAccounts')).json();
   }
 
   // delete user

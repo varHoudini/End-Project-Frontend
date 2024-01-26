@@ -294,6 +294,23 @@ app.post("/api/users", (req, res) => {
   );
 });
 
+app.get("/api/userAccounts", (req, res) => {
+  console.log("Verzoek ontvangen op /api/users");
+
+  const query = "SELECT * FROM userAccounts"; 
+
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error("MySQL-queryfout:", err);
+      res.status(500).send("Interne serverfout");
+    } else {
+      console.log("Queryresultaten:", results);
+      res.json(results);
+    }
+
+  });
+  });
+
 // Start de server
 app.listen(port, () => {
   console.log(`Server draait op poort ${port}`);
