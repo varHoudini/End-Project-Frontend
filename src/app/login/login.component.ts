@@ -12,8 +12,8 @@ import { UserService } from '../shared/user.service';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  username!: string;
-  password!: string;
+  username_id!: string;
+  password_hash!: string;
   constructor(
     private UserService: UserService,
     private toastr: ToastrService
@@ -21,7 +21,7 @@ export class LoginComponent {
 
   // Let's go wild and write some async sh!t
   async onSubmit() {
-    const token = await this.UserService.login(this.username, this.password);
+    const token = await this.UserService.login(this.username_id, this.password_hash);
     if (token) {
       // Store token in local storage
       localStorage.setItem('token', token);
@@ -29,8 +29,7 @@ export class LoginComponent {
         'You now have access to the protected component',
         'Yay'
       );
-      // Redirect to protected component
-      // ...
+      window.location.href = '/home';
     } else {
       this.toastr.error('Wrong credentials', 'Not Yay');
     }

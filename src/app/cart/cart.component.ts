@@ -18,7 +18,9 @@ export class CartComponent implements OnInit {
   womenCartItems: product[] = [];
   kidsCartItems: product[] = [];
 
-  constructor(private cartService: CartService, private toastr: ToastrService) {}
+  constructor(
+    private cartService: CartService, 
+    private toastr: ToastrService) {}
 
   cartitems: product[] = [];
   ngOnInit(): void {
