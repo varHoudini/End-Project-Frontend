@@ -255,6 +255,45 @@ app.post("/api/products", (req, res) => {
   );
 });
 
+app.post("/api/users", (req, res) => {
+  console.log("Verzoek ontvangen op /api/users (POST)");
+
+  const userData = req.body;
+
+  const query =
+    "INSERT INTO users (first_name, last_name, birthday, streetname, houseNumber, postalcode, city, country, email, phone, username, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+  db.query(
+    query,
+    [
+      userData.first_name,
+      userData.last_name,
+      userData.birthday,
+      userData.streetname,
+      userData.houseNumber,
+      userData.postalcode,
+      userData.city,
+      userData.country,
+      userData.email,
+      userData.phone,
+      userData.username,
+      userData.password,
+    ],
+    (err, results) => {
+      if (err) {
+        console.error("MySQL-queryfout:", err);
+        res.status(500).send("Interne serverfout");
+      } else {
+        console.log("Product succesvol toegevoegd:", results);
+        res.json({
+          message: "Product succesvol toegevoegd",
+          productId: results.insertId,
+        });
+      }
+    }
+  );
+});
+
 // Start de server
 app.listen(port, () => {
   console.log(`Server draait op poort ${port}`);

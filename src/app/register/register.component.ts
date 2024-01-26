@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../shared/user.service';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 export class RegisterComponent {
   first_name: any;
   last_name: any;
-  birthdate: any;
+  birthday: any;
   streetname: any;
   houseNumber: any;
   postalcode: any;
@@ -25,10 +24,7 @@ export class RegisterComponent {
   showPassword: boolean = false;
   email: any;
 
-  constructor(
-    private UserService: UserService,
-    private toastr: ToastrService
-  ) {}
+  constructor(private UserService: UserService) {}
 
   togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
@@ -40,25 +36,24 @@ export class RegisterComponent {
 
     // acces the service and send username and password
     this.UserService.register(
-      this.username,
-      this.password,
       this.first_name,
       this.last_name,
-      this.birthdate,
+      this.birthday,
       this.streetname,
       this.houseNumber,
       this.postalcode,
       this.city,
-      this.phone,
+      this.country,
       this.email,
-      this.country
+      this.phone,
+      this.username,
+      this.password
     );
-    this.toastr.success('You have registered', 'Yay');
 
     // clear the fields;
     this.first_name = '';
     this.last_name = '';
-    this.birthdate = '';
+    this.birthday = '';
     this.streetname = '';
     this.houseNumber = '';
     this.postalcode = '';

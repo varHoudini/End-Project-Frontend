@@ -11,10 +11,10 @@ export class UserService {
     username: string,
     email: string,
     password: string,
-    birthdate: Date,
+    birthday: Date,
     streetname: string,
     houseNumber: number,
-    postalcode: number,
+    postalcode: any,
     city: string,
     phone: number,
     country: string
@@ -26,7 +26,7 @@ export class UserService {
       email: email,
       first_name: first_name,
       last_name: last_name,
-      birthdate: birthdate,
+      birthday: birthday,
       streetname: streetname,
       houseNumber: houseNumber,
       postalcode: postalcode,
@@ -35,6 +35,7 @@ export class UserService {
       country: country,
       password: hashedPassword,
     };
+    console.log(user);
     const result = await fetch('http://localhost:3000/api/users', {
       method: 'POST',
       headers: {

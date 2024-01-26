@@ -5,10 +5,10 @@
 
   <form action="#" method="post" id="register_form">
     <div class="firstname">
-      <label for="firstname"></label>
       <input
         type="text"
         placeholder="firstname"
+        [(ngModel)]="first_name"
         name="first_name"
         id="first_name"
         required
@@ -16,17 +16,17 @@
     </div>
 
     <div class="lastname">
-      <label for="lastname"></label>
       <input
         type="text"
         placeholder="lastname"
+        [(ngModel)]="last_name"
         name="last_name"
         id="last_name"
         required
       />
     </div>
+
     <div class="username">
-      <label for="username"></label>
       <input
         type="text"
         placeholder="username"
@@ -36,87 +36,89 @@
         required
       />
     </div>
+
     <div class="password">
-      <label for="password"></label>
       <input
         type="password"
-        [(ngModel)]="password"
         placeholder="password"
+        [(ngModel)]="password"
         name="password"
         id="password"
         required
       />
     </div>
+
     <div class="birthday">
-      <label for="birthday"></label>
       <input
         type="date"
         placeholder="birthday"
+        [(ngModel)]="birthday"
         name="birthday"
         id="birthday"
         required
       />
     </div>
     <div class="street">
-      <label for="street"></label>
       <input
         type="text"
         placeholder="street"
-        name="street"
+        [(ngModel)]="streetname"
+        name="streetname"
         id="street"
         required
       />
     </div>
     <div class="houseNumber">
-      <label for="houseNumber"></label>
       <input
         type="text"
         placeholder="houseNumber"
+        [(ngModel)]="houseNumber"
         name="houseNumber"
         id="houseNumber"
         required
       />
     </div>
+
     <div class="postalcode">
-      <label for="postalcode"></label>
       <input
         type="text"
         placeholder="postalcode"
+        [(ngModel)]="postalcode"
         name="postalcode"
         id="postalcode"
         required
       />
     </div>
+
     <div class="city">
-      <label for="city"></label>
       <input type="text" placeholder="city" name="city" id="city" required />
     </div>
+
     <div class="country">
-      <label for="country"></label>
       <input
         type="text"
         placeholder="country"
+        [(ngModel)]="country"
         name="country"
         id="country"
         required
       />
     </div>
     <div class="e-mail">
-      <label for="e-mail"></label>
       <input
         type="text"
-        [(ngModel)]="email"
         placeholder="e-mail"
+        [(ngModel)]="email"
         name="e-mail"
         id="e-mail"
         required
       />
     </div>
     <div class="phoneNumber">
-      <label for="phoneNumber"></label>
       <input
         type="number"
         placeholder="phoneNumber"
+        [(ngModel)]="phone"
         name="phoneNumber"
         id="phoneNumber"
         required
@@ -126,9 +128,9 @@
     <div class="register">
       <input
         type="submit"
-        value="signup"
+        value="sign&nbsp;up"
         (click)="onSubmit()"
-        id="form_button"
+        id="form_signup"
       />
     </div>
   </form>
