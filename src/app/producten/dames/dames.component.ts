@@ -100,7 +100,8 @@ export class DamesComponent implements OnInit {
   addToCart(product: product, size: string): void {
     if (size) {
       //console.log('Product added to cart:', product, 'Size:', size);
-
+      // reload page when product is added
+      window.location.reload();
       //krijg de product van localstorage
       const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
       cartItems.push({ ...product, size: size });

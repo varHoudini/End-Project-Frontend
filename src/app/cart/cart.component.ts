@@ -30,6 +30,8 @@ export class CartComponent implements OnInit {
     if (index > -1) {
       this.cartitems.splice(index, 1);
       localStorage.setItem('cartItems', JSON.stringify(this.cartitems));
+      // reload page when product is removed
+      window.location.reload();
     }
   }
 
@@ -65,8 +67,7 @@ export class CartComponent implements OnInit {
     if (this.cartitems.length === 0) {
       alert('Your cart is empty!');
       return;
-    }
-    else {
+    } else {
       alert('Your order has been placed!');
       localStorage.removeItem('cartItems');
       this.cartitems = [];
