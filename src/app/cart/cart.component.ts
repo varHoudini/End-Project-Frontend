@@ -19,8 +19,9 @@ export class CartComponent implements OnInit {
   kidsCartItems: product[] = [];
 
   constructor(
-    private cartService: CartService, 
-    private toastr: ToastrService) {}
+    private cartService: CartService,
+    private toastr: ToastrService
+  ) {}
 
   cartitems: product[] = [];
   ngOnInit(): void {
@@ -72,10 +73,9 @@ export class CartComponent implements OnInit {
   // functie om een popup melding te geven en cart leeg te maken en als die leeg is, ook een melding.
   checkOut() {
     if (this.cartitems.length === 0) {
-      alert('Your cart is empty!');
+      this.toastr.error('Your cart is empty', 'Error');
       return;
     } else {
-      alert('Your order has been placed!');
       this.toastr.success('Your order has been placed', 'Success');
       localStorage.removeItem('cartItems');
       this.cartitems = [];
