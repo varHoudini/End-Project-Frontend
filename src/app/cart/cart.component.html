@@ -59,16 +59,16 @@
       <thead>
         <tr>
           <th>Item</th>
+          <th>Size</th>
           <th>Price</th>
-          <th>Quantity</th>
         </tr>
       </thead>
       <tbody>
         @for (item of cartitems; track item.id) {
         <tr>
           <td>{{ item.name }}</td>
+          <td>{{ item.size }}</td>
           <td>{{ item.price | currency : "EUR" }}</td>
-          <td><input type="number" min="1" id="quantity" /></td>
         </tr>
         } @if (cartitems.length == 0) {
         <tr>
