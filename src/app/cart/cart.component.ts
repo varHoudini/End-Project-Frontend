@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CartService } from './cart.service';
 import { product } from './cart.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cart',
@@ -17,7 +18,7 @@ export class CartComponent implements OnInit {
   womenCartItems: product[] = [];
   kidsCartItems: product[] = [];
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private toastr: ToastrService) {}
 
   cartitems: product[] = [];
   ngOnInit(): void {
@@ -32,6 +33,7 @@ export class CartComponent implements OnInit {
       localStorage.setItem('cartItems', JSON.stringify(this.cartitems));
       // reload page when product is removed
       window.location.reload();
+      this.toastr.success('Product removed from cart', 'Success');
     }
   }
 
@@ -43,12 +45,14 @@ export class CartComponent implements OnInit {
   // Function to handle the "Add to Cart" button click for men's productss
   addToCartMen(products: product) {
     this.cartService.add(products, 'Heren');
+    this.toastr.success('Product added to cart', 'Success');
     // this.menCartItems = this.cartService.getProducts('Heren');
   }
 
   // Function to handle the "Add to Cart" button click for women's productss
   addToCartWomen(products: product) {
     this.cartService.add(products, 'Dames');
+    this.toastr.success('Product added to cart', 'Success');
     //this.womenCartItems = this.cartService.getProducts('Dames');
   }
 
@@ -56,6 +60,7 @@ export class CartComponent implements OnInit {
   addToCartKids(products: product) {
     this.cartService.add(products, 'Kids');
     //this.kidsCartItems = this.cartService.getProducts('Kids');
+    this.toastr.success('Product added to cart', 'Success');
   }
 
   quantityTotal() {
@@ -69,6 +74,7 @@ export class CartComponent implements OnInit {
       return;
     } else {
       alert('Your order has been placed!');
+      this.toastr.success('Your order has been placed', 'Success');
       localStorage.removeItem('cartItems');
       this.cartitems = [];
       return;
