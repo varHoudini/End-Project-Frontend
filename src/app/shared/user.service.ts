@@ -77,8 +77,7 @@ export class UserService {
   }
 
   // Checks user credentials and returns a valid token or null
-// Checks user credentials and returns a valid token or null
-async login(username_id: string, plainTextPassword: string) {
+  async login(username_id: string, plainTextPassword: string) {
   let users = await this.getUsers();
   let user = users.find(
     (u: { username_id: string; password_hash: string }) => u.username_id === username_id
